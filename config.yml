@@ -1,0 +1,25 @@
+# Site settings
+site_name: "Kondo Blog"
+site_url: "https://www.yoursite.com"
+site_description: "A minimalist blog powered by Kondo."
+
+# Author settings
+author:
+  name: "Your Name"
+  email: "your.email@example.com"
+
+# Layout settings
+layout: "layout.liquid"   # Default layout template for pages
+
+# Date and timezone settings
+date_format: "%B %d, %Y"  # Date format for posts (e.g., "January 1, 2024")
+timezone: "UTC"           # Timezone for date formatting
+
+# Social media links (optional, for footer or sidebar)
+social:
+  twitter: "https://twitter.com/yourusername"
+  instagram: "https://instagram.com/yourusername"
+  github: "https://github.com/yourusername"
+
+# Analytics (optional)
+analytics: "UA-12345678-9"  # Google Analytics tracking ID
