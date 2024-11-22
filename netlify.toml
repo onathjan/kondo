@@ -1,0 +1,6 @@
+[build]
+  command = "bundle exec ruby build.rb"
+  publish = "site"
+
+[build.environment]
+  RUBY_VERSION = "3.3.3"
