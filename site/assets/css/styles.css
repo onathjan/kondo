@@ -49,11 +49,12 @@ li {
 }
 
 a {
-  color: #3F52F6;
+  color: #2964AA;
   text-decoration: none;
 }
 
 a:hover {
+  color: #1D4677;
   text-decoration: underline;
 }
 
@@ -89,6 +90,7 @@ header {
   color: #121212;
   font-size: 30px;
   margin: 0;
+  text-decoration: none;
 }
 
 .home-link:hover {
@@ -108,6 +110,8 @@ nav ul li {
 }
 nav ul li a {
   padding: 0.5rem;
+
+  text-decoration: none;
 }
 
 footer {
@@ -148,7 +152,11 @@ footer p {
   }
 
   a {
-    color: #6977E0
+    color: #7AB7FF
+  }
+
+  a:hover {
+    color: #9BC9FF;
   }
 
   .copyright {
