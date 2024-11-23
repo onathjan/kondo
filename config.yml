@@ -9,7 +9,9 @@ author:
   email: "your.email@example.com"
 
 # Layout settings
-layout: "layout.liquid"   # Default layout template for pages
+layouts:
+  main: "main_layout.liquid"  # Layout for the homepage or main pages
+  post: "post_layout.liquid"  # Layout for individual blog posts
 
 # Date and timezone settings
 date_format: "%B %d, %Y"  # Date format for posts (e.g., "January 1, 2024")
