@@ -1,0 +1,174 @@
+body {
+  background-color: #FCFCFC;
+  color: #121212;
+  display: grid;
+  font: 20px/1.6 Arial, sans-serif;
+  grid-template-columns: minmax(auto, 60ch);
+  grid-template-rows: auto 1fr;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem 0.25rem;
+}
+
+h1 {
+  font: 600 30px/1.2 Arial, sans-serif;
+  margin: 35px 0 -5px 0;
+}
+
+h2 {
+  font: 600 24px/1.2 Arial, sans-serif;
+  margin: 35px 0 -5px 0;
+}
+
+h3 {
+  font: italic 400 18px Arial, sans-serif;
+  margin-bottom: 30px;
+}
+
+h4 {
+  font: 400 20px Arial, sans-serif;
+}
+
+h5 {
+  font: 400 18px Arial, sans-serif;
+  margin: 0 0 50px 0;
+  text-align: center;
+}
+
+h6 {
+  display: inline;
+  margin-right: 10px;
+}
+
+ul {
+  margin: 10px 0;
+}
+
+li {
+  margin: 5px 0;
+}
+
+a {
+  color: #3F52F6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  display: block;  
+  margin: 50px auto 0 auto;
+  max-width: 100%; 
+  height: auto;
+  padding: 0;
+}
+
+hr {
+  background-color: #CCC;
+  border: none; 
+  height: 1px;
+  margin: 35px 0 25px;
+}
+
+.footnotes ol {
+  padding-left: 25px; 
+}
+
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.home-link {
+  color: #121212;
+  font-size: 30px;
+  margin: 0;
+}
+
+.home-link:hover {
+  color: #121212;
+  text-decoration: underline;
+}
+
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  list-style: none;
+  margin: 0;
+}
+nav ul li a {
+  padding: 0.5rem;
+}
+
+footer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+footer p {
+  margin: 0;
+}
+
+.copyright {
+  color: #444;
+}
+
+.posts {
+  list-style: none;
+  margin-top: 20px;
+  padding: 0; 
+}
+
+.posts li {
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1f2229;
+  }
+  
+  body, .home-link, .home-link:hover {
+      color: #ebecf0;
+  }
+
+  a {
+    color: #6977E0
+  }
+
+  .copyright {
+    color: #A9A9A9;
+  }
+
+  hr {
+    background-color: #333;
+  }
+}
+
+@media (max-width: 650px) {
+  body { 
+    font: 18px/1.6 Arial, sans-serif;
+    padding: 1rem 0.25rem;
+  }
+
+  header {
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+}
