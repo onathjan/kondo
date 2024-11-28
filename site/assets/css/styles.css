@@ -72,6 +72,13 @@ hr {
   margin: 35px 0 25px;
 }
 
+code {
+  background-color: #DDD;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 4px;
+}
+
 .footnotes ol {
   padding-left: 25px; 
 }
@@ -163,6 +170,10 @@ footer p {
   }
 
   hr {
+    background-color: #333;
+  }
+
+  code {
     background-color: #333;
   }
 }
