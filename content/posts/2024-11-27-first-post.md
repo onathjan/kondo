@@ -1,6 +1,8 @@
 ---
-title: First Post
-date: 11/27/2024
+title: Hello, World!
+date: November 27th, 2024
+slug: hello
+draft: false
 ---
 
 # This is my first post on here. 

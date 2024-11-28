@@ -1,9 +1,7 @@
 ---
-title: Home
-slug: index
+title: About Me
+slug: about
 ---
-
-# About Me
 
 This is where you can tell the world about yourself and how great of a taste you have in static site generators. 
 

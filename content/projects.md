@@ -3,8 +3,6 @@ title: Projects
 slug: projects
 ---
 
-# Projects
-
 ## [Project One](https://en.wikipedia.org/wiki/Main_Page)
 
 A short description about Project One
