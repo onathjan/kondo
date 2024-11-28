@@ -9,6 +9,6 @@ Share a bit about yourself—where you're from, what you do, and what you're pas
 
 You don’t need to overthink it—just keep it authentic and reflective of your personality.
 
-With Kondo, editing this page is simple. The content for this About Me page lives in the content/about.md file, so you can easily update it by opening that file and changing the text. The layout is managed by the main template, which ensures your site looks consistent across all pages.
+With Kondo, editing this page is simple. The content for this About Me page lives in the `content/about.md` file, so you can easily update it by opening that file and changing the text. The layout is managed by the main template, which ensures your site looks consistent across all pages.
 
 Your About Me page doesn’t have to be long or elaborate—it just needs to feel like *you*.
