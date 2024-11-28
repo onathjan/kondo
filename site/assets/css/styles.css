@@ -3,7 +3,7 @@ body {
   color: #121212;
   display: grid;
   font: 20px/1.6 Arial, sans-serif;
-  grid-template-columns: minmax(auto, 60ch);
+  grid-template-columns: minmax(auto, 65ch);
   grid-template-rows: auto 1fr;
   justify-content: center;
   min-height: 100vh;
