@@ -5,7 +5,7 @@ require 'liquid'
 require 'yaml'
 
 config_file = YAML.load_file("config.yml")
-SITE_Name = config_file["site-name"]
+SITE_NAME = config_file["site-name"]
 
 def read_front_matter(file_path)
   content = File.read(file_path)
