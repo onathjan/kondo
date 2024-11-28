@@ -5,8 +5,6 @@ slug: hello
 draft: false
 ---
 
-# This is my first post on here. 
-
 In lieu of lorum ipsum text, here is text from the Wikipedia page of one of my favorite plants in the world—the tanoak tree.
 
 Notholithocarpus densiflorus, commonly known as the tanoak or tanbark-oak, is a broadleaf tree in the family Fagaceae, and the type species of the genus Notholithocarpus. It is native to the far western United States, particularly Oregon and California. It ranges from 15–40 meters (49–131 feet) in height, with a trunk diameter of 60–190 centimeters (24–75 inches).
