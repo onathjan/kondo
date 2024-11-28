@@ -3,6 +3,8 @@ title: What I'm Doing Now
 slug: now
 ---
 
+# What I'm Doing Now
+
 ### Updated on November 27th, 2024, from my home office on the Moon.
 
 ## Working on Kondo
