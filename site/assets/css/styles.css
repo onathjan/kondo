@@ -133,6 +133,12 @@ footer p {
   margin: 0;
 }
 
+.footer-icons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
 .copyright {
   color: #444;
 }
