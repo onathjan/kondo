@@ -35,7 +35,7 @@ It is native to the far western United States, found in southwest Oregon and in 
 
 Tanoak is shade tolerant and benefits from disturbances. It is susceptible to wildfire and wounds that are exploited by rot fungi. It is one of the species most seriously affected by the disease "sudden oak death" (Phytophthora ramorum), with high mortality reported over much of the species' range.
 
-Fine hairs on the young leaves and twigs discourage deer from eating them.[2] Various animals, including squirrels, deer, and bears, eat the nuts.
+Fine hairs on the young leaves and twigs discourage deer from eating them. Various animals, including squirrels, deer, and bears, eat the nuts.
 
 ## Uses
 
