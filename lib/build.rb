@@ -50,29 +50,30 @@ end
 
 def build_pages(content_dir)
   head = File.read("partials/_head.html")
-  header = File.read("partials/_head.html")
-  footer = File.read("partials/_head.html")
+  header = File.read("partials/_header.html")
+  footer = File.read("partials/_footer.html")
 
-  Dir.glob("#{content_dir}/*.html").each do |file|
-    content = File.read(file)
+  Dir.glob("#{content_dir}/**/*.html").each do |file|
+    file_content = File.read(file)
+    file_destination_path = file.gsub(content_dir, "site")
+    FileUtils.mkdir_p(File.dirname(file_destination_path))
+
     page_content = <<~PAGE
       <!DOCTYPE html>
       <html lang="en">
-        %HEAD%
+        #{head}
         <body>
-        %HEADER%
+        #{header}
         <main>
-        %CONTENT%
+        #{file_content}
         </main>
-        %FOOTER%
+        #{footer}
         </body>
       </html>
     PAGE
-    File.open(file, "w") do |file|
-      file.write(page_content)
-      file.gsub!("%HEAD%", head)
-      file.gsub!("%HEADER%", header)
-      file.gsub!("%FOOTER%", footer)
+
+    File.open(file_destination_path, "wb") do |destination_file|
+      destination_file.write(page_content)
     end
   end
 end
@@ -86,7 +87,7 @@ end
 
 def build_site
   start_time = Time.now
-  build_index_page
+  # build_index_page
   build_pages("content/")
   build_pages("content/posts")
   clean_html_files
@@ -96,4 +97,4 @@ def build_site
   puts "Build complete | #{((end_time-start_time).to_f * 1000).round(2)} ms."
 end
 
-build_pages("content")
+build_site
