@@ -3,8 +3,7 @@ require 'htmlbeautifier'
 require 'kramdown'
 require 'yaml'
 
-config_file = YAML.load_file("config.yml")
-SITE_NAME = config_file["site-name"]
+SITE_NAME = "Kondo"
 
 def read_front_matter(file_path)
   content = File.read(file_path)
@@ -38,11 +37,14 @@ def build_index_page
     title: Home
     slug: index
     ---
-  
+
+    <ol class="posts">
   BLOG
   posts.each do |post|
-    blog_content << "<a href='#{post[:slug]}'>#{post[:title]}</a>"
+    blog_content << "<li><a href='#{post[:slug]}'>#{post[:title]}</a></li>"
   end
+
+  blog_content << "</ol>"
 
   File.write("content/index.html", blog_content)
 end
@@ -53,7 +55,6 @@ def build_main_pages
   footer = File.read("partials/_footer.html")
 
   Dir.glob("content/*.html").each do |file|
-    next if file == "content/index.html"
     front_matter, body = read_front_matter(file)
     file_destination_path = file.gsub("content", "site")
     FileUtils.mkdir_p(File.dirname(file_destination_path))
@@ -67,7 +68,7 @@ def build_main_pages
           <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon.png">
           <link rel="apple-touch-icon" href="assets/images/favicon.png">
           <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
-          <title>#{front_matter["title"]} | Kondo</title>
+          <title>#{front_matter["title"]} | #{SITE_NAME}</title>
         </head>
         <body>
         #{header}
@@ -78,6 +79,8 @@ def build_main_pages
         </body>
       </html>
     PAGE
+
+    page_content.gsub!("Home | #{SITE_NAME}", "#{SITE_NAME}") if front_matter["title"] == "Home"
 
     File.open(file_destination_path, "wb") do |destination_file|
       destination_file.write(page_content)
@@ -93,7 +96,7 @@ end
 
 
 def build_site
-  # build_index_page
+  build_index_page
   build_main_pages
   # build_pages("content/posts")
   clean_html_files
