@@ -49,8 +49,31 @@ def build_index_page
 end
 
 def build_pages(content_dir)
-  Dir.glob("#{content_dir}/*.html").each do |file|
+  head = File.read("partials/_head.html")
+  header = File.read("partials/_head.html")
+  footer = File.read("partials/_head.html")
 
+  Dir.glob("#{content_dir}/*.html").each do |file|
+    content = File.read(file)
+    page_content = <<~PAGE
+      <!DOCTYPE html>
+      <html lang="en">
+        %HEAD%
+        <body>
+        %HEADER%
+        <main>
+        %CONTENT%
+        </main>
+        %FOOTER%
+        </body>
+      </html>
+    PAGE
+    File.open(file, "w") do |file|
+      file.write(page_content)
+      file.gsub!("%HEAD%", head)
+      file.gsub!("%HEADER%", header)
+      file.gsub!("%FOOTER%", footer)
+    end
   end
 end
 
@@ -73,4 +96,4 @@ def build_site
   puts "Build complete | #{((end_time-start_time).to_f * 1000).round(2)} ms."
 end
 
-build_site
+build_pages("content")
