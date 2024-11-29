@@ -6,6 +6,18 @@ require 'yaml'
 config_file = YAML.load_file("config.yml")
 SITE_NAME = config_file["site-name"]
 
+def read_front_matter(file_path)
+  content = File.read(file_path)
+
+  if content =~ /\A---\n(.*?)\n---\n/m
+    front_matter = YAML.safe_load($1)
+    body = $'
+    [front_matter, body]
+  else
+    [nil, content]
+  end
+end
+
 def build_index_page
   posts = []
 
