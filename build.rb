@@ -14,7 +14,7 @@ def read_front_matter(file_path)
     body = $'
     [front_matter, body]
   else
-    [nil, content]
+    [nil, body]
   end
 end
 
@@ -60,24 +60,32 @@ def build_index_page
   File.write("content/index.md", blog_content)
 end
 
-def build_pages(content_dir)
-  head = File.read("partials/_head.html")
+def build_main_pages
+  # head = File.read("partials/_head.html")
   header = File.read("partials/_header.html")
   footer = File.read("partials/_footer.html")
 
-  Dir.glob("#{content_dir}/**/*.html").each do |file|
-    file_content = File.read(file)
-    file_destination_path = file.gsub(content_dir, "site")
+  Dir.glob("content/*.html").each do |file|
+    next if file == "content/index.html"
+    front_matter, body = read_front_matter(file)
+    file_destination_path = file.gsub("content", "site")
     FileUtils.mkdir_p(File.dirname(file_destination_path))
 
     page_content = <<~PAGE
       <!DOCTYPE html>
       <html lang="en">
-        #{head}
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon.png">
+          <link rel="apple-touch-icon" href="assets/images/favicon.png">
+          <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+          <title>#{front_matter["title"]} | Kondo</title>
+        </head>
         <body>
         #{header}
         <main>
-        #{file_content}
+        #{body}
         </main>
         #{footer}
         </body>
@@ -99,7 +107,7 @@ end
 
 def build_site
   # build_index_page
-  build_pages("content/")
-  build_pages("content/posts")
+  build_main_pages
+  # build_pages("content/posts")
   clean_html_files
 end
