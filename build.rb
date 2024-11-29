@@ -21,7 +21,7 @@ end
 def build_index_page
   posts = []
 
-  Dir.glob("content/posts/*md").each do |file|
+  Dir.glob("content/posts/*html").each do |file|
     front_matter, _ = read_front_matter(file)
     year = file[14..17]
     date = file[14..23]
@@ -30,10 +30,6 @@ def build_index_page
     draft = front_matter['draft']
     posts << { year: year, date: date, title: title, slug: slug } unless draft
   end
-
-  post_years = []
-  posts.each { |post| post_years << post.values.first }
-  post_years.uniq!
 
   posts.sort_by! { |post| post[:date] }.reverse!
 
@@ -44,20 +40,11 @@ def build_index_page
     ---
   
   BLOG
-
-  post_years.reverse.each do |year|
-    blog_content << "## #{year}\n\n"
-
-    posts.each do |post|
-      if post[:year] == year
-        blog_content << "- [#{post[:title]}](#{post[:slug]})\n"
-      end
-    end
-    blog_content << "{:.posts}\n\n"
-    blog_content << "---\n\n\n" unless year == post_years.reverse.last
+  posts.each do |post|
+    blog_content << "<a href='#{post[:slug]}'>#{post[:title]}</a>"
   end
 
-  File.write("content/index.md", blog_content)
+  File.write("content/index.html", blog_content)
 end
 
 def build_main_pages
