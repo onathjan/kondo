@@ -50,7 +50,6 @@ def build_index_page
 end
 
 def build_main_pages
-  # head = File.read("partials/_head.html")
   header = File.read("partials/_header.html")
   footer = File.read("partials/_footer.html")
 
