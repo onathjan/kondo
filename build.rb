@@ -49,14 +49,16 @@ def build_index_page
   File.write("content/index.html", blog_content)
 end
 
-def build_main_pages
+def build_pages(content_dir)
   header = File.read("partials/_header.html")
   footer = File.read("partials/_footer.html")
 
-  Dir.glob("content/*.html").each do |file|
+  Dir.glob("#{content_dir}/*.html").each do |file|
     front_matter, body = read_front_matter(file)
-    file_destination_path = file.gsub("content", "site")
+    file_destination_path = "site/#{front_matter["slug"]}.html"
     FileUtils.mkdir_p(File.dirname(file_destination_path))
+
+    next if content_dir == "content/posts" && front_matter['draft']
 
     page_content = <<~PAGE
       <!DOCTYPE html>
@@ -96,7 +98,7 @@ end
 
 def build_site
   build_index_page
-  build_main_pages
-  # build_pages("content/posts")
+  build_pages("content")
+  build_pages("content/posts")
   clean_html_files
 end
