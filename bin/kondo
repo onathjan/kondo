@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+
+# require_relative '../build' # Adjust path if needed
+
+case ARGV[0]
+when "build"
+  puts "Building the site..."
+  build_site
+  puts "Build complete!"
+
+when "serve"
+  puts "Serving the site..."
+  
+  index_path = "site/index.html"
+  if File.exist?(index_path)
+    system("open #{index_path}")  # For macOS
+    # For Linux, use `xdg-open`:
+    # system("xdg-open #{index_path}")
+    # For Windows, use `start`:
+    # system("start #{index_path}")
+  else
+    puts "Error: 'site/index.html' not found. Please build the site first."
+  end
+
+when "help", nil
+  # Display help information
+  puts <<~HELP
+    Kondo - A super-minimal static site generator
+
+    Usage:
+      kondo build    # Generate the static site
+      kondo serve    # Open the site locally in your default browser
+      kondo help     # Show this help message
+  HELP
+
+else
+  puts "Unknown command: #{ARGV[0]}"
+  puts "Run 'kondo help' for usage."
+end
