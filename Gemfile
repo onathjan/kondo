@@ -4,5 +4,3 @@ ruby "3.3.3"
 
 gem "htmlbeautifier"
 gem "kramdown"
-gem "liquid"
-gem "rerun"
