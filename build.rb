@@ -86,15 +86,8 @@ end
 
 
 def build_site
-  start_time = Time.now
   # build_index_page
   build_pages("content/")
   build_pages("content/posts")
   clean_html_files
-  # remove_html_extensions 
-  # uncomment above once server is set up to handle all files as text/html
-  end_time = Time.now 
-  puts "Build complete | #{((end_time-start_time).to_f * 1000).round(2)} ms."
 end
-
-build_site
