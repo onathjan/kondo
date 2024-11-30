@@ -50,6 +50,7 @@ li {
 
 a {
   color: #2964AA;
+  text-decoration: none;
 }
 
 a:hover {
