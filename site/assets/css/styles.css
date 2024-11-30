@@ -1,11 +1,40 @@
+/* Cabin Regular */
+@font-face {
+  font-family: 'Cabin';
+  src: url('../fonts/cabin-regular.woff2') format('woff2'),
+       url('../fonts/cabin-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Cabin Italic */
+@font-face {
+  font-family: 'Cabin';
+  src: url('../fonts/cabin-italic.woff2') format('woff2'),
+       url('../fonts/cabin-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Cabin Bold */
+@font-face {
+  font-family: 'Cabin';
+  src: url('../fonts/cabin-bold.woff2') format('woff2'),
+       url('../fonts/cabin-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
 body {
   background-color: #FCFCFC;
   color: #121212;
   display: grid;
-  font: 20px/1.6 Arial, sans-serif;
+  font-family: 'Cabin', sans-serif;
+  font-size: 20px;
   grid-template-columns: minmax(auto, 60ch);
   grid-template-rows: auto 1fr;
   justify-content: center;
+  line-height: 1.6;
   min-height: 100vh;
   padding: 1.5rem 0.25rem;
 }
