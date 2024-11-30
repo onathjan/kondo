@@ -68,6 +68,8 @@ def build_pages(content_dir)
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>#{front_matter["title"]} | #{SITE_NAME}</title>
+          
           <!-- Favicon for older and all browsers -->
           <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -90,6 +92,8 @@ def build_pages(content_dir)
           <meta property="og:url" content="#{SITE_URL}/#{front_matter["slug"]}">
           <meta property="og:description" content="#{front_matter["description"]}">
           <meta property="og:image" content="#{SITE_URL}/assets/images/open-graph-image.jpg">
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="675" />
 
           <!-- Twitter Card -->
           <meta name="twitter:card" content="summary_large_image">
@@ -97,7 +101,8 @@ def build_pages(content_dir)
           <meta name="twitter:title" content="#{front_matter["title"]}">
           <meta name="twitter:description" content="#{front_matter["description"]}">
           <meta name="twitter:image" content="#{SITE_URL}/assets/images/open-graph-image.jpg">
-          <title>#{front_matter["title"]} | #{SITE_NAME}</title>
+          <meta name="twitter:image:width" content="1200" />
+          <meta name="twitter:image:height" content="675" />
         </head>
         <body>
         #{header}
