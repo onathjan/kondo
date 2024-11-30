@@ -1,65 +1,36 @@
-/* Cabin Regular */
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
-       url('../fonts/Roboto-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* Cabin Italic */
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Italic.woff2') format('woff2'),
-       url('../fonts/Roboto-Italic.woff') format('woff');
-  font-weight: 400;
-  font-style: italic;
-}
-
-/* Cabin Bold */
-@font-face {
-  font-family: 'Roboto';
-  src: url('../fonts/Roboto-Bold.woff2') format('woff2'),
-       url('../fonts/Roboto-Bold.woff') format('woff');
-  font-weight: 700;
-  font-style: normal;
-}
-
 body {
   background-color: #FCFCFC;
   color: #121212;
   display: grid;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
+  font: 20px/1.6 Arial, sans-serif;
   grid-template-columns: minmax(auto, 60ch);
   grid-template-rows: auto 1fr;
   justify-content: center;
-  line-height: 1.6;
   min-height: 100vh;
   padding: 1.5rem 0.25rem;
 }
 
 h1 {
-  font: 600 30px/1.2 'Roboto', sans-serif;
+  font: 600 30px/1.2 Arial, sans-serif;
   margin: 35px 0 -5px 0;
 }
 
 h2 {
-  font: 600 24px/1.2 'Roboto', sans-serif;
+  font: 600 24px/1.2 Arial, sans-serif;
   margin: 35px 0 -5px 0;
 }
 
 h3 {
-  font: italic 400 18px 'Roboto', sans-serif;
+  font: italic 400 18px Arial, sans-serif;
   margin-bottom: 30px;
 }
 
 h4 {
-  font: 400 20px 'Roboto', sans-serif;
+  font: 400 20px Arial, sans-serif;
 }
 
 h5 {
-  font: 400 18px 'Roboto', sans-serif;
+  font: 400 18px Arial, sans-serif;
   margin: 0 0 50px 0;
   text-align: center;
 }
