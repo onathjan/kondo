@@ -29,7 +29,7 @@ body {
   background-color: #FCFCFC;
   color: #121212;
   display: grid;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 20px;
   grid-template-columns: minmax(auto, 60ch);
   grid-template-rows: auto 1fr;
@@ -40,26 +40,26 @@ body {
 }
 
 h1 {
-  font: 600 30px/1.2 Arial, sans-serif;
+  font: 600 30px/1.2 'Roboto', sans-serif;
   margin: 35px 0 -5px 0;
 }
 
 h2 {
-  font: 600 24px/1.2 Arial, sans-serif;
+  font: 600 24px/1.2 'Roboto', sans-serif;
   margin: 35px 0 -5px 0;
 }
 
 h3 {
-  font: italic 400 18px Arial, sans-serif;
+  font: italic 400 18px 'Roboto', sans-serif;
   margin-bottom: 30px;
 }
 
 h4 {
-  font: 400 20px Arial, sans-serif;
+  font: 400 20px 'Roboto', sans-serif;
 }
 
 h5 {
-  font: 400 18px Arial, sans-serif;
+  font: 400 18px 'Roboto', sans-serif;
   margin: 0 0 50px 0;
   text-align: center;
 }
