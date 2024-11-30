@@ -1,26 +1,26 @@
 /* Cabin Regular */
 @font-face {
-  font-family: 'Cabin';
-  src: url('../fonts/cabin-regular.woff2') format('woff2'),
-       url('../fonts/cabin-regular.woff') format('woff');
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Regular.woff2') format('woff2'),
+       url('../fonts/Roboto-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }
 
 /* Cabin Italic */
 @font-face {
-  font-family: 'Cabin';
-  src: url('../fonts/cabin-italic.woff2') format('woff2'),
-       url('../fonts/cabin-italic.woff') format('woff');
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Italic.woff2') format('woff2'),
+       url('../fonts/Roboto-Italic.woff') format('woff');
   font-weight: 400;
   font-style: italic;
 }
 
 /* Cabin Bold */
 @font-face {
-  font-family: 'Cabin';
-  src: url('../fonts/cabin-bold.woff2') format('woff2'),
-       url('../fonts/cabin-bold.woff') format('woff');
+  font-family: 'Roboto';
+  src: url('../fonts/Roboto-Bold.woff2') format('woff2'),
+       url('../fonts/Roboto-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
 }
