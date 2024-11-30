@@ -4,6 +4,7 @@ require 'kramdown'
 require 'yaml'
 
 SITE_NAME = "Kondo"
+SITE_URL = "https://www.gokondo.io"
 
 def read_front_matter(file_path)
   content = File.read(file_path)
@@ -66,9 +67,35 @@ def build_pages(content_dir)
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon.png">
-          <link rel="apple-touch-icon" href="assets/images/favicon.png">
+          <!-- Favicon for older and all browsers -->
+          <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+          <!-- Modern .png favicon for better resolution -->
+          <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
+
+          <!-- Scalable .svg for future-proofing -->
+          <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
           <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
+
+          <!-- Primary Meta Tags -->
+          <meta name="title" content="#{front_matter["title"]}">
+          <meta name="description" content="#{front_matter["description"]}">
+
+          <!-- Open Graph -->
+          <meta property="og:site-name" content="#{SITE_NAME}">
+          <meta property="og:title" content="#{front_matter["title"]}">
+          <meta property="og:type" content="article">
+          <meta property="og:url" content="http://example.com/#{front_matter[:slug]}">
+          <meta property="og:description" content="#{front_matter["description"]}">
+          <meta property="og:image" content="https://example.com/assets/images/open-graph-image.jpg">
+
+          <!-- Twitter Card -->
+          <meta name="twitter:card" content="summary_large_image">
+          <meta property="twitter:url" content="https://example.com/#{front_matter[:slug]}">
+          <meta name="twitter:title" content="#{front_matter["title"]}">
+          <meta name="twitter:description" content="#{front_matter["description"]}">
+          <meta name="twitter:image" content="https://example.com/assets/images/open-graph-image.jpg">
           <title>#{front_matter["title"]} | #{SITE_NAME}</title>
         </head>
         <body>
