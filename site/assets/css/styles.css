@@ -50,11 +50,11 @@ li {
 
 a {
   color: #2964AA;
-  text-decoration: underline;
 }
 
 a:hover {
   color: #1D4677;
+  text-decoration: underline;
 }
 
 img {
