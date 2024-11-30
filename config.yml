@@ -1,6 +1,6 @@
 # Site settings
-site_name: "Kondo Blog"
-site_url: "https://www.yoursite.com"
+site_name: Kondo
+site_url: https://www.gokondo.io
 site_description: "A minimalist blog powered by Kondo."
 
 # Layout settings

@@ -3,8 +3,9 @@ require 'htmlbeautifier'
 require 'kramdown'
 require 'yaml'
 
-SITE_NAME = "Kondo"
-SITE_URL = "https://www.gokondo.io"
+config_file = YAML.safe_load(File.read('config.yml'))
+SITE_NAME = config_file["site_name"]
+SITE_URL = config_file["site_url"]
 
 def read_front_matter(file_path)
   content = File.read(file_path)
