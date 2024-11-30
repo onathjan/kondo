@@ -31,7 +31,16 @@ def parse_markdown(markdown)
                      .gsub(/^(\d+)\.\s+(.*)$/, "<ol><li>\\2</li></ol>") 
                      .gsub(/`(.*?)`/, "<code>\\1</code>")
                      .gsub(/```(.*?)```/m, "<pre><code>\\1</code></pre>")
-                     
+
+  # Wrap regular paragraphs in <p> tags, but not if it's a list, code block, or header
+  markdown = markdown.split("\n\n").map do |block|
+    if block =~ /^(#|<h\d|ul|ol|code|pre|strong|em)/  # if block already has HTML tags, don't wrap in <p>
+      block
+    else
+      "<p>#{block.strip}</p>"  # wrap regular paragraphs in <p>
+    end
+  end.join("\n\n")
+
   markdown
 end
 
@@ -151,3 +160,5 @@ def build_site
   build_pages("content/posts")
   clean_html_files
 end
+
+puts parse_markdown(File.read("README.md"))
