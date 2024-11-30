@@ -19,6 +19,22 @@ def read_front_matter(file_path)
   end
 end
 
+def parse_markdown(markdown)
+  markdown = markdown.gsub(/^### (.*?)$/, "<h3>\\1</h3>")
+                     .gsub(/^## (.*?)$/, "<h2>\\1</h2>")
+                     .gsub(/^# (.*?)$/, "<h1>\\1</h1>")
+                     .gsub(/\*\*(.*?)\*\*/i, "<strong>\\1</strong>")
+                     .gsub(/__(.*?)__/i, "<strong>\\1</strong>")
+                     .gsub(/\*(.*?)\*/i, "<em>\\1</em>")
+                     .gsub(/_(.*?)_/i, "<em>\\1</em>")
+                     .gsub(/^(\*|\-|\+)\s+(.*)$/, "<ul><li>\\2</li></ul>") 
+                     .gsub(/^(\d+)\.\s+(.*)$/, "<ol><li>\\2</li></ol>") 
+                     .gsub(/`(.*?)`/, "<code>\\1</code>")
+                     .gsub(/```(.*?)```/m, "<pre><code>\\1</code></pre>")
+                     
+  markdown
+end
+
 def build_index_page
   posts = []
 
@@ -69,7 +85,7 @@ def build_pages(content_dir)
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>#{front_matter["title"]} | #{SITE_NAME}</title>
-          
+
           <!-- Favicon for older and all browsers -->
           <link rel="icon" href="favicon.ico" type="image/x-icon">
 
