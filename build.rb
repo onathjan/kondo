@@ -86,16 +86,16 @@ def build_pages(content_dir)
           <meta property="og:site-name" content="#{SITE_NAME}">
           <meta property="og:title" content="#{front_matter["title"]}">
           <meta property="og:type" content="article">
-          <meta property="og:url" content="http://example.com/#{front_matter[:slug]}">
+          <meta property="og:url" content="#{SITE_URL}/#{front_matter[:slug]}">
           <meta property="og:description" content="#{front_matter["description"]}">
-          <meta property="og:image" content="https://example.com/assets/images/open-graph-image.jpg">
+          <meta property="og:image" content="#{SITE_URL}/assets/images/open-graph-image.jpg">
 
           <!-- Twitter Card -->
           <meta name="twitter:card" content="summary_large_image">
-          <meta property="twitter:url" content="https://example.com/#{front_matter[:slug]}">
+          <meta property="twitter:url" content="#{SITE_URL}/#{front_matter[:slug]}">
           <meta name="twitter:title" content="#{front_matter["title"]}">
           <meta name="twitter:description" content="#{front_matter["description"]}">
-          <meta name="twitter:image" content="https://example.com/assets/images/open-graph-image.jpg">
+          <meta name="twitter:image" content="#{SITE_URL}/assets/images/open-graph-image.jpg">
           <title>#{front_matter["title"]} | #{SITE_NAME}</title>
         </head>
         <body>
