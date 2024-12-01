@@ -78,8 +78,10 @@ def build_pages(content_dir)
   header = File.read("partials/_header.html")
   footer = File.read("partials/_footer.html")
 
-  Dir.glob("#{content_dir}/*.html").each do |file|
+  Dir.glob("#{content_dir}/*.md").each do |file|
+    next if file == "content/index.md"
     front_matter, body = read_front_matter(file)
+    body_converted_to_html = parse_markdown(body)
     file_destination_path = "site/#{front_matter["slug"]}.html"
     FileUtils.mkdir_p(File.dirname(file_destination_path))
 
@@ -130,7 +132,7 @@ def build_pages(content_dir)
         <body>
         #{header}
         <main>
-        #{body}
+        #{body_converted_to_html}
         </main>
         #{footer}
         </body>
@@ -153,8 +155,8 @@ end
 
 
 def build_site
-  build_index_page
+  # build_index_page
   build_pages("content")
-  build_pages("content/posts")
+  # build_pages("content/posts")
   clean_html_files
 end

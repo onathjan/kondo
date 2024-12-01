@@ -10,7 +10,6 @@ slug: now
 The Now page is all about giving your readers a snapshot of what’s currently happening in your life. Inspired by the [Now movement](https://nownownow.com), this page is a way to share what you’re focused on at the moment—whether that’s work, hobbies, travel, or personal growth.
 
 Here are some ideas for what you might include:
-
 - **What You're Working On:** Highlight your current projects, whether they’re professional, creative, or personal.
 - **What You’re Learning:** Share any books, courses, or new skills you’re exploring.
 - **Where You Are:** Mention if you’re traveling, living somewhere new, or just enjoying time in your usual environment.

@@ -3,8 +3,7 @@ title: About Me
 slug: about
 ---
 
-
-# About Me<
+# About Me
 
 The About Me page is a chance to tell your readers who you are and why your site exists. Whether you're sharing your personal journey, professional background, or just your favorite hobbies, this page helps visitors connect with the person behind the content.
 
