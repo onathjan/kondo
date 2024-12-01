@@ -95,9 +95,9 @@ def build_index_page
   Dir.glob("content/posts/*md").each do |file|
     front_matter, _ = read_front_matter(file)
     next if front_matter['draft'] == true
-    year = file[14..17]
-    date = file[14..23]
     title = front_matter['title']
+    date = front_matter['date'].to_s
+    year = front_matter['date'].to_s[0..4]
     slug = front_matter['slug'] + ".html" 
     posts << { year: year, date: date, title: title, slug: slug }
   end

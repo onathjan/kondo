@@ -1,9 +1,13 @@
 ---
-title: Build Index Page Test 2
-date: January 2nd, 2025
-slug: test-2
+title: "A Third and Final Post"
+date: "2025-1-15"
+slug: "final"
 draft: false
 ---
+
+# A Third and Final Post
+
+### January 15th, 2025
 
 This should be visible.
 

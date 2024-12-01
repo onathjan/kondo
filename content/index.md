@@ -3,6 +3,6 @@ title: Home
 slug: index
 ---
 
-- [Build Index Page Test 2](test-2.html)
-- [Build Index Page Test](test.html)
+- [A Third and Final Post](final.html)
 - [Hello, World!](hello.html)
+- [A Post About All Sorts of Shit](slug.html)

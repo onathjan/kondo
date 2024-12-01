@@ -1,8 +1,13 @@
 ---
-title: Build Index Page Test
-slug: test
+title: "A Post About All Sorts of Shit"
+date: "2024-11-26"
+slug: "slug"
 draft: false
 ---
+
+# A Post About All Sorts of Shit
+
+### November 26th, 2024
 
 This should be visible.
 

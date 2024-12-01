@@ -1,12 +1,13 @@
 ---
-title: Hello, World!
-slug: hello
+title: "Hello, World!"
+date: "2024-12-01"
+slug: "hello"
 draft: false
 ---
 
 # Hello, World!
 
-### August 26th, 2024
+### December 1st, 2024
 
 This should be visible.
 
