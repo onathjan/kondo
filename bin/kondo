@@ -30,9 +30,11 @@ end
 
 case ARGV[0]
 when "build"
+  start_time = Time.now
   puts "Building the site..."
   build_site
-  puts "Build complete!"
+  end_time = Time.now 
+  puts "Build complete | #{((end_time-start_time).to_f * 1000).round(2)} ms."
 
 when "serve"
   puts "Serving the site..."
