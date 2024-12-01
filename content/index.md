@@ -3,6 +3,6 @@ title: Home
 slug: index
 ---
 
-- [Build_Index_Page Test 2](test-2.html)
-- [Build_Index_Page Test](test.html)
+- [Build Index Page Test 2](test-2.html)
+- [Build Index Page Test](test.html)
 - [Hello, World!](hello.html)

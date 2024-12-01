@@ -20,15 +20,19 @@ def read_front_matter(file_path)
 end
 
 def parse_markdown(markdown)
-  markdown = markdown.gsub(/^### (.*?)$/, "<h3>\\1</h3>")
+  markdown = markdown.gsub(/^# (.*?)$/, "<h1>\\1</h1>")
                      .gsub(/^## (.*?)$/, "<h2>\\1</h2>")
-                     .gsub(/^# (.*?)$/, "<h1>\\1</h1>")
+                     .gsub(/^### (.*?)$/, "<h3>\\1</h3>")
+                     .gsub(/^#### (.*?)$/, "<h3>\\1</h4>")
+                     .gsub(/^##### (.*?)$/, "<h3>\\1</h5>")
+                     .gsub(/^###### (.*?)$/, "<h3>\\1</h6>")
                      .gsub(/\*\*(.*?)\*\*/i, "<strong>\\1</strong>")
                      .gsub(/__(.*?)__/i, "<strong>\\1</strong>")
                      .gsub(/\*(.*?)\*/i, "<em>\\1</em>")
                      .gsub(/_(.*?)_/i, "<em>\\1</em>")
                      .gsub(/^(\*|\-|\+)\s+(.*)$/, "<ul><li>\\2</li></ul>") 
-                     .gsub(/^(\d+)\.\s+(.*)$/, "<ol><li>\\2</li></ol>") 
+                     .gsub(/^(\d+)\.\s+(.*)$/, "<ol><li>\\2</li></ol>")
+                     .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2" target="_blank">\1</a>')
                      .gsub(/`(.*?)`/, "<code>\\1</code>")
                      .gsub(/```(.*?)```/m, "<pre><code>\\1</code></pre>")
                      .split("\n\n").map do |block|
@@ -45,7 +49,7 @@ end
 def build_index_page
   posts = []
 
-  Dir.glob("content/posts/*html").each do |file|
+  Dir.glob("content/posts/*md").each do |file|
     front_matter, _ = read_front_matter(file)
     year = file[14..17]
     date = file[14..23]
