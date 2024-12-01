@@ -1,9 +1,8 @@
 require 'fileutils'
 require 'yaml'
 
-config_file = YAML.safe_load(File.read('config.yml'))
-SITE_NAME = config_file["site_name"]
-SITE_URL = config_file["site_url"]
+SITE_NAME = "Kondo"
+SITE_URL = "https://www.gokondo.io"
 
 def read_front_matter(file_path)
   content = File.read(file_path)
