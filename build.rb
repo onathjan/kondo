@@ -1,6 +1,4 @@
 require 'fileutils'
-require 'htmlbeautifier'
-require 'kramdown'
 require 'yaml'
 
 config_file = YAML.safe_load(File.read('config.yml'))
@@ -20,30 +18,75 @@ def read_front_matter(file_path)
 end
 
 def parse_markdown(markdown)
-  markdown = markdown.gsub(/^# (.*?)$/, "<h1>\\1</h1>")
-                     .gsub(/^## (.*?)$/, "<h2>\\1</h2>")
-                     .gsub(/^### (.*?)$/, "<h3>\\1</h3>")
-                     .gsub(/^#### (.*?)$/, "<h3>\\1</h4>")
-                     .gsub(/^##### (.*?)$/, "<h3>\\1</h5>")
-                     .gsub(/^###### (.*?)$/, "<h3>\\1</h6>")
-                     .gsub(/\*\*(.*?)\*\*/i, "<strong>\\1</strong>")
-                     .gsub(/__(.*?)__/i, "<strong>\\1</strong>")
-                     .gsub(/\*(.*?)\*/i, "<em>\\1</em>")
-                     .gsub(/_(.*?)_/i, "<em>\\1</em>")
-                     .gsub(/^(\*|\-|\+)\s+(.*)$/, "<ul><li>\\2</li></ul>") 
-                     .gsub(/^(\d+)\.\s+(.*)$/, "<ol><li>\\2</li></ol>")
-                     .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2" target="_blank">\1</a>')
-                     .gsub(/`(.*?)`/, "<code>\\1</code>")
-                     .gsub(/```(.*?)```/m, "<pre><code>\\1</code></pre>")
-                     .split("\n\n").map do |block|
-                       if block =~ /^(#|<h\d|ul|ol|code|pre|strong|em)/  
-                         block
-                       else
-                         "<p>#{block.strip}</p>"
-                       end
-                     end.join("\n\n")
+  lines = markdown.split("\n")
+  html = []
+  inside_ul = false
+  inside_ol = false
 
-  markdown
+  lines.each do |line|
+    line.strip!
+
+    # Handle unordered list items
+    if line.match(/^(\*|\-|\+)\s+(.*)$/)
+      unless inside_ul
+        html << "<ul>"
+        inside_ul = true
+      end
+      html << "  <li>#{$2}</li>"
+      next
+    elsif inside_ul
+      html << "</ul>"
+      inside_ul = false
+    end
+
+    # Handle ordered list items
+    if line.match(/^\d+\.\s+(.*)$/)
+      unless inside_ol
+        html << "<ol>"
+        inside_ol = true
+      end
+      html << "  <li>#{$1}</li>"
+      next
+    elsif inside_ol
+      html << "</ol>"
+      inside_ol = false
+    end
+
+    # Handle headers
+    if line.match(/^###### (.*?)$/)
+      html << "<h6>#{$1}</h6>"
+      next
+    elsif line.match(/^##### (.*?)$/)
+      html << "<h5>#{$1}</h5>"
+      next
+    elsif line.match(/^#### (.*?)$/)
+      html << "<h4>#{$1}</h4>"
+      next
+    elsif line.match(/^### (.*?)$/)
+      html << "<h3>#{$1}</h3>"
+      next
+    elsif line.match(/^## (.*?)$/)
+      html << "<h2>#{$1}</h2>"
+      next
+    elsif line.match(/^# (.*?)$/)
+      html << "<h1>#{$1}</h1>"
+      next
+    end
+
+    # Paragraphs (fallback for any non-matching lines)
+    html << "<p>#{line}</p>" unless line.empty?
+  end
+
+  # Close any remaining open tags
+  html << "</ul>" if inside_ul
+  html << "</ol>" if inside_ol
+
+  # Join lines back together and add inline styling
+  html.join("\n")
+      .gsub(/\*\*(.*?)\*\*/, '<strong>\1</strong>') 
+      .gsub(/\*(.*?)\*/i, '<em>\1</em>')
+      .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2" target="_blank">\1</a>')
+      .gsub(/`([^`]+)`/, '<code>\1</code>')
 end
 
 def build_index_page
@@ -153,10 +196,8 @@ def clean_html_files
   end
 end
 
-
 def build_site
   build_index_page
   build_pages("content")
-  # build_pages("content/posts")
-  clean_html_files
+  build_pages("content/posts")
 end
