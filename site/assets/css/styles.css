@@ -36,8 +36,10 @@ h5 {
 }
 
 h6 {
-  display: inline;
-  margin-right: 10px;
+  color: #333;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: -25px;
 }
 
 ul {

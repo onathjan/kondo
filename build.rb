@@ -111,7 +111,10 @@ def build_index_page
     ---
   INDEX
   posts.each do |post|
-    index_content << "- [#{post[:title]}](#{post[:slug]})\n"
+    index_content << <<~POST_LINK
+        ###### #{post[:date]}
+        ## [#{post[:title]}](#{post[:slug]})
+    POST_LINK
   end
 
   File.write("content/index.md", index_content)
