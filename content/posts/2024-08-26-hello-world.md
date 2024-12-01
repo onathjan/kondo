@@ -1,9 +1,12 @@
 ---
 title: Hello, World!
-date: August 26th, 2024
 slug: hello
 draft: false
 ---
+
+# Hello, World!
+
+### August 26th, 2024
 
 This should be visible.
 

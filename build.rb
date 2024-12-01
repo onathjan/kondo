@@ -85,7 +85,7 @@ def parse_markdown(markdown)
   html.join("\n")
       .gsub(/\*\*(.*?)\*\*/, '<strong>\1</strong>') 
       .gsub(/\*(.*?)\*/i, '<em>\1</em>')
-      .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2" target="_blank">\1</a>')
+      .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2">\1</a>')
       .gsub(/`([^`]+)`/, '<code>\1</code>')
 end
 
@@ -94,12 +94,12 @@ def build_index_page
 
   Dir.glob("content/posts/*md").each do |file|
     front_matter, _ = read_front_matter(file)
+    next if front_matter['draft'] == true
     year = file[14..17]
     date = file[14..23]
     title = front_matter['title']
     slug = front_matter['slug'] + ".html" 
-    draft = front_matter['draft']
-    posts << { year: year, date: date, title: title, slug: slug } unless draft
+    posts << { year: year, date: date, title: title, slug: slug }
   end
 
   posts.sort_by! { |post| post[:date] }.reverse!
@@ -124,11 +124,19 @@ def build_pages(content_dir)
 
   Dir.glob("#{content_dir}/*.md").each do |file|
     front_matter, body = read_front_matter(file)
-    body_converted_to_html = parse_markdown(body)
+    body = parse_markdown(body)
     file_destination_path = "site/#{front_matter["slug"]}.html"
     FileUtils.mkdir_p(File.dirname(file_destination_path))
 
-    next if content_dir == "content/posts" && front_matter['draft']
+    next if front_matter['draft'] == true
+
+    if ["index", "about", "now", "projects"].include?(front_matter["slug"]) 
+      page_type = "website" 
+    else 
+      page_type = "article"
+    end
+
+    front_matter["title"]
 
     page_content = <<~PAGE
       <!DOCTYPE html>
@@ -156,7 +164,7 @@ def build_pages(content_dir)
           <!-- Open Graph -->
           <meta property="og:site-name" content="#{SITE_NAME}">
           <meta property="og:title" content="#{front_matter["title"]}">
-          <meta property="og:type" content="article">
+          <meta property="og:type" content="#{page_type}">
           <meta property="og:url" content="#{SITE_URL}/#{front_matter["slug"]}">
           <meta property="og:description" content="#{front_matter["description"]}">
           <meta property="og:image" content="#{SITE_URL}/assets/images/open-graph-image.jpg">
@@ -175,7 +183,7 @@ def build_pages(content_dir)
         <body>
         #{header}
         <main>
-        #{body_converted_to_html}
+        #{body}
         </main>
         #{footer}
         </body>
