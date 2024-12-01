@@ -197,12 +197,6 @@ def build_pages
   end
 end
 
-def clean_html_files
-  Dir.glob("site/*.html").each do |file_path|
-    File.write(file_path, HtmlBeautifier.beautify(File.read(file_path)))
-  end
-end
-
 def build_site
   build_index_page
   build_pages
