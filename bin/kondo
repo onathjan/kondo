@@ -3,6 +3,31 @@
 require_relative '../build'
 require 'yaml'
 
+def create_new_post(title)
+  date = Time.now.to_s[0..9]
+  file_name = "content/posts/#{date}-#{title.downcase.split(" ").join("-")}.md"
+  content = <<~CONTENT
+    ---
+    title: "#{title}"
+    date: "#{date}"
+    slug: "change-me"
+    description: "Add a nice description here. Aim for 150-160 characters."
+    draft: true
+    ---
+
+    # #{title}
+  
+    ### Publish Date in Month Day, Year format (e.g. January 1st, 2025)
+  CONTENT
+
+  File.open(file_name, 'w') do |file| 
+    file.write(content) 
+  end
+
+  # Open the new file in VSCode. Change to meet your setup if you don't use the code command to open files in VSCode.
+  system("code #{file_name}")
+end
+
 case ARGV[0]
 when "build"
   puts "Building the site..."
@@ -41,10 +66,16 @@ when "clean"
     File.delete(file_path) if File.exist?(file_path)
     puts "Deleted: #{file_path}"
   end
-  
 
+when "new"
+  if ARGV[1]
+    title = ARGV[1..-1].join(" ")
+    create_new_post(title)
+  else
+    puts "Error: Please provide a title for the new post (kondo new \"My New Post\")"
+  end
+  
 when "help", nil
-  # Display help information
   puts <<~HELP
     Kondo - A super-minimal static site generator
 
