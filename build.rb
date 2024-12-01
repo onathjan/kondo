@@ -57,21 +57,18 @@ def build_index_page
 
   posts.sort_by! { |post| post[:date] }.reverse!
 
-  blog_content = <<~BLOG
+  index_content = <<~INDEX
     ---
     title: Home
     slug: index
     ---
 
-    <ol class="posts">
-  BLOG
+  INDEX
   posts.each do |post|
-    blog_content << "<li><a href='#{post[:slug]}'>#{post[:title]}</a></li>"
+    index_content << "- [#{post[:title]}](#{post[:slug]})\n"
   end
 
-  blog_content << "</ol>"
-
-  File.write("content/index.html", blog_content)
+  File.write("content/index.md", index_content)
 end
 
 def build_pages(content_dir)
@@ -79,7 +76,6 @@ def build_pages(content_dir)
   footer = File.read("partials/_footer.html")
 
   Dir.glob("#{content_dir}/*.md").each do |file|
-    next if file == "content/index.md"
     front_matter, body = read_front_matter(file)
     body_converted_to_html = parse_markdown(body)
     file_destination_path = "site/#{front_matter["slug"]}.html"
@@ -155,7 +151,7 @@ end
 
 
 def build_site
-  # build_index_page
+  build_index_page
   build_pages("content")
   # build_pages("content/posts")
   clean_html_files
