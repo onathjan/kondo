@@ -35,11 +35,6 @@ when "clean"
   site_files = Dir.glob("site/*.html").map { |file| File.basename(file, File.extname(file)) }
 
   files_to_delete = site_files - content_files
-  puts content_files
-  puts "-----"
-  puts site_files
-  puts "-----"
-  puts files_to_delete
 
   files_to_delete.each do |file|
     file_path = "site/#{file}.html"
@@ -56,6 +51,7 @@ when "help", nil
     Usage:
       kondo build    # Generate the static site
       kondo serve    # Open the site locally in your default browser
+      kondo clean    # Removes files from site/ that have been deleted from content/
       kondo help     # Show this help message
   HELP
 
