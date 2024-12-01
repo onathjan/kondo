@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-require_relative '../build' # Adjust path if needed
+require_relative '../build'
+require 'yaml'
 
 case ARGV[0]
 when "build"
@@ -21,6 +22,31 @@ when "serve"
   else
     puts "Error: 'site/index.html' not found. Please build the site first."
   end
+
+when "clean"
+  content_files = Dir.glob("content/**/*").map do |file|
+    if File.extname(file) == ".md"
+      metadata = File.read(file).match(/^---\n(.*?)\n---/m)[1]
+      yaml_data = YAML.load(metadata)
+      yaml_data['slug']
+    end
+  end.compact
+
+  site_files = Dir.glob("site/*.html").map { |file| File.basename(file, File.extname(file)) }
+
+  files_to_delete = site_files - content_files
+  puts content_files
+  puts "-----"
+  puts site_files
+  puts "-----"
+  puts files_to_delete
+
+  files_to_delete.each do |file|
+    file_path = "site/#{file}.html"
+    File.delete(file_path) if File.exist?(file_path)
+    puts "Deleted: #{file_path}"
+  end
+  
 
 when "help", nil
   # Display help information
