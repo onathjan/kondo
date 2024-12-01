@@ -117,11 +117,11 @@ def build_index_page
   File.write("content/index.md", index_content)
 end
 
-def build_pages(content_dir)
+def build_pages
   header = File.read("partials/_header.html")
   footer = File.read("partials/_footer.html")
 
-  Dir.glob("#{content_dir}/*.md").each do |file|
+  Dir.glob("content/**/*.md").each do |file|
     front_matter, body = read_front_matter(file)
     body = parse_markdown(body)
     file_destination_path = "site/#{front_matter["slug"]}.html"
@@ -205,6 +205,5 @@ end
 
 def build_site
   build_index_page
-  build_pages("content")
-  build_pages("content/posts")
+  build_pages
 end
