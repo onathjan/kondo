@@ -1,6 +1,7 @@
 ---
-title: About Me
-slug: about
+title: "About Me"
+slug: "about"
+description: "The about me page is where you can share a bit about yourself—where you're from, what you do, and what you're passionate about. Explain why you created this site."
 ---
 
 # About Me

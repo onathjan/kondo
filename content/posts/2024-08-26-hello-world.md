@@ -2,6 +2,7 @@
 title: "Hello, World!"
 date: "2024-12-01"
 slug: "hello"
+description: "It's nice to meet you all and I can't wait to see where this blog takes me! My name is"
 draft: false
 ---
 

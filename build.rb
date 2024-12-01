@@ -106,10 +106,10 @@ def build_index_page
 
   index_content = <<~INDEX
     ---
-    title: Home
-    slug: index
+    title: "Home"
+    slug: "index"
+    description: "Kondo is a minimalist static site generator focused on simplicity and ease of use. Create clean, fast websites with no dependencies or clutter."
     ---
-
   INDEX
   posts.each do |post|
     index_content << "- [#{post[:title]}](#{post[:slug]})\n"

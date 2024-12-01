@@ -1,6 +1,7 @@
 ---
-title: What I'm Doing Now
-slug: now
+title: "What I'm Doing Now"
+slug: "now"
+description: "The Now page is all about giving your readers a snapshot of what’s currently happening in your life."
 ---
 
 # What I'm Doing Now

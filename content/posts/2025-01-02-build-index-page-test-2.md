@@ -2,6 +2,7 @@
 title: "A Third and Final Post"
 date: "2025-1-15"
 slug: "final"
+description: "A very interesting description for a very interesting third and final post here on my blog."
 draft: false
 ---
 

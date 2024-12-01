@@ -1,11 +1,12 @@
 ---
-title: "A Post About All Sorts of Shit"
+title: "A Post About All Sorts of Stuff"
 date: "2024-11-26"
 slug: "slug"
+description: "Another description for a post about all sorts of stuff"
 draft: false
 ---
 
-# A Post About All Sorts of Shit
+# A Post About All Sorts of Stuff
 
 ### November 26th, 2024
 
