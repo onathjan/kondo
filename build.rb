@@ -88,6 +88,47 @@ def parse_markdown(markdown)
       .gsub(/`([^`]+)`/, '<code>\1</code>')
 end
 
+def beautify_html(input)
+  indent_level = 0
+  indent_tags = ['body', 'header', 'nav', 'ul', 'ol', 'div', 'main', 'footer']
+  output = []
+
+  input.strip.split("\n").each do |line|
+    line.strip!
+    next if line.empty?
+
+    # Check if it's a closing tag for decreasing indent
+    if closing_tag?(line, indent_tags)
+      indent_level -= 1 if indent_level > 0
+      output << "#{"  " * indent_level}#{line}"
+    # Check if it's an opening tag for indenting
+    elsif opening_tag?(line, indent_tags)
+      output << "#{"  " * indent_level}#{line}"
+      indent_level += 1
+    else
+      output << "#{"  " * indent_level}#{line}"
+    end
+  end
+
+  output.join("\n")
+end
+
+def opening_tag?(line, indent_tags)
+  tag_name = extract_tag_name(line)
+  tag_name && indent_tags.include?(tag_name)
+end
+
+def closing_tag?(line, indent_tags)
+  tag_name = extract_tag_name(line)
+  tag_name && indent_tags.include?(tag_name) && line.start_with?("</")
+end
+
+def extract_tag_name(line)
+  # Matches both opening and closing tag names (e.g., <body> or </body>)
+  match = line.match(/<\/?([a-zA-Z0-9-]+)/)
+  match ? match[1] : nil
+end
+
 def build_index_page
   posts = []
 
@@ -185,9 +226,9 @@ def build_pages
           <meta name="twitter:image:height" content="675" />
         </head>
         <body>
-        #{header}
+          #{header}
         <main>
-        #{body}
+          #{body}
         </main>
         #{footer}
         </body>
@@ -195,6 +236,8 @@ def build_pages
     PAGE
 
     page_content.gsub!("Home | #{SITE_NAME}", "#{SITE_NAME}") if front_matter["title"] == "Home"
+
+    page_content = beautify_html(page_content)
 
     File.open(file_destination_path, "wb") do |destination_file|
       destination_file.write(page_content)
