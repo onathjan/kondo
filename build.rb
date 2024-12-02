@@ -103,26 +103,28 @@ def build_index_page
 
   posts.sort_by! { |post| post[:date] }.reverse!
 
-  index_content = <<~INDEX
-    ---
-    title: "Home"
-    slug: "index"
-    description: "Kondo is a minimalist static site generator focused on simplicity and ease of use. Create clean, fast websites with no dependencies or clutter."
-    ---
-  INDEX
-  posts.each do |post|
-    index_content << <<~POST_LINK
-        ###### #{post[:date]}
-        ## [#{post[:title]}](#{post[:slug]})
+  posts_content = posts.map do |post|
+    <<~POST_LINK
+      ###### #{post[:date]}
+      ## [#{post[:title]}](#{post[:slug]})
     POST_LINK
-  end
+  end.join("\n")
+
+index_content = <<~INDEX
+  ---
+  title: "Home"
+  slug: "index"
+  description: "Kondo is a minimalist static site generator focused on simplicity and ease of use. Create clean, fast websites with no dependencies or clutter."
+  ---
+  
+  #{posts_content}
+INDEX
 
   File.write("content/index.md", index_content)
 end
 
 def build_pages
-  header = File.read("partials/_header.html")
-  footer = File.read("partials/_footer.html")
+  header, footer = %w[_header _footer].map { |f| File.read("partials/#{f}.html") }
 
   Dir.glob("content/**/*.md").each do |file|
     front_matter, body = read_front_matter(file)
