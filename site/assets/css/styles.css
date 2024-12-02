@@ -12,17 +12,17 @@ body {
 
 h1 {
   font: 600 30px/1.2 Arial, sans-serif;
-  margin: 35px 0 -5px 0;
+  margin-top: 25px;
 }
 
 h2 {
   font: 600 24px/1.2 Arial, sans-serif;
-  margin: 35px 0 -5px 0;
+  margin: 25px 0 -12px 0;
 }
 
 h3 {
   font: italic 400 18px Arial, sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 h4 {
@@ -39,7 +39,7 @@ h6 {
   color: #333;
   font-size: 18px;
   font-weight: 400;
-  margin-bottom: -25px;
+  margin: 20px 0 -20px 0;
 }
 
 ul {
