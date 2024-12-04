@@ -204,6 +204,7 @@ def build_pages
           <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
 
           <!-- Primary Meta Tags -->
+          <meta name="generator" content="Kondo—a minimalist SSG">
           <meta name="title" content="#{front_matter["title"]}">
           <meta name="description" content="#{front_matter["description"]}">
 
