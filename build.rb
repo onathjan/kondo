@@ -242,7 +242,33 @@ def build_pages
   end
 end
 
+def generate_sitemap
+  urls = Dir.glob("site/**/*.html").map do |file|
+    path = file.sub("site/", '').sub('index.html', '')
+    loc = "https://www.gokondo.io/#{path}".chomp('/')
+    loc
+  end
+
+  sitemap = <<~XML
+    <?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  XML
+
+  urls.each do |url|
+    sitemap += <<~XML
+      <url>
+        <loc>#{url}</loc>
+        <lastmod>#{Time.now.strftime('%Y-%m-%d')}</lastmod>
+      </url>
+    XML
+  end
+
+  sitemap += "  </urlset>\n" # Ensure closing tag is properly aligned
+  File.write("site/sitemap.xml", sitemap)
+end
+
 def build_site
   build_index_page
   build_pages
+  generate_sitemap
 end
