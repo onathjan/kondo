@@ -190,6 +190,8 @@ def build_pages
 
           <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
 
+          <link rel="alternate" type="application/rss+xml" href="#{SITE_URL}/feed.xml" />
+
           <!-- Primary Meta Tags -->
           <meta name="generator" content="Kondo—a minimalist SSG">
           <meta name="title" content="#{front_matter["title"]}">
