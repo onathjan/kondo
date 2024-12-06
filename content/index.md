@@ -13,4 +13,3 @@ description: "Kondo is a minimalist static site generator focused on simplicity 
 
 ###### 2024-11-26
 ## [A Post About All Sorts of Stuff](slug.html)
-

@@ -152,18 +152,9 @@ def build_index_page
     POST_LINK
   end.join("\n")
 
-index_content = <<~INDEX
-  ---
-  title: "Home"
-  slug: "index"
-  updated_on: "#{Time.now.to_s[0..9]}"
-  description: "Kondo is a minimalist static site generator focused on simplicity and ease of use. Create clean, fast websites with no dependencies or clutter."
-  ---
-  
-  #{posts_content}
-INDEX
-
-  File.write("content/index.md", index_content)
+  open("content/index.md", 'a') { |f|
+    f.puts posts_content
+  }
 end
 
 def build_pages
