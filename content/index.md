@@ -1,6 +1,7 @@
 ---
 title: "Home"
 slug: "index"
+updated_on: "2024-12-05"
 description: "Kondo is a minimalist static site generator focused on simplicity and ease of use. Create clean, fast websites with no dependencies or clutter."
 ---
 

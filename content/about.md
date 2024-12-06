@@ -1,6 +1,7 @@
 ---
 title: "About Me"
 slug: "about"
+updated_on: "2024-12-05"
 description: "The about me page is where you can share a bit about yourself—where you're from, what you do, and what you're passionate about. Explain why you created this site."
 ---
 
