@@ -156,6 +156,7 @@ index_content = <<~INDEX
   ---
   title: "Home"
   slug: "index"
+  updated_on: "#{Time.now.to_s[0..9]}"
   description: "Kondo is a minimalist static site generator focused on simplicity and ease of use. Create clean, fast websites with no dependencies or clutter."
   ---
   
@@ -243,27 +244,31 @@ def build_pages
 end
 
 def generate_sitemap
-  urls = Dir.glob("site/**/*.html").map do |file|
-    path = file.sub("site/", '').sub('index.html', '')
-    loc = "https://www.gokondo.io/#{path}".chomp('/')
-    loc
-  end
+  urls = Dir.glob("content/**/*.md").map do |file|
+    front_matter, _ = read_front_matter(file)
+    next if front_matter["draft"]
+    slug = front_matter["slug"]
+    updated_on = front_matter["updated_on"]
+    loc = "https://www.gokondo.io/#{slug}".sub("index", '').chomp('/')
+    [loc, updated_on]
+  end.compact
+
+  sitemap_body = urls.map do |loc, lastmod|
+    <<~XML
+      <url>
+        <loc>#{loc}</loc>
+        <lastmod>#{lastmod}</lastmod>
+      </url>
+    XML
+  end.join.strip
 
   sitemap = <<~XML
     <?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    #{sitemap_body}
+    </urlset>
   XML
 
-  urls.each do |url|
-    sitemap += <<~XML
-      <url>
-        <loc>#{url}</loc>
-        <lastmod>#{Time.now.strftime('%Y-%m-%d')}</lastmod>
-      </url>
-    XML
-  end
-
-  sitemap += "  </urlset>\n" # Ensure closing tag is properly aligned
   File.write("site/sitemap.xml", sitemap)
 end
 
