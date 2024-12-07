@@ -265,6 +265,10 @@ def generate_sitemap
   File.write("site/sitemap.xml", sitemap)
 end
 
+def generate_rss_feed
+  
+end
+
 def build_site
   build_index_page
   build_pages
