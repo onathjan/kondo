@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'yaml'
+require 'cgi'
 
 SITE_NAME = "Kondo"
 SITE_URL = "https://www.gokondo.io"
@@ -87,6 +88,9 @@ def parse_markdown(markdown)
       .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2">\1</a>')
       .gsub(/^\s*[-*_]{3,}\s*$/, '<hr>')
       .gsub(/`([^`]+)`/, '<code>\1</code>')
+      .gsub(/```(.*?)```/m) do
+        "<pre><code>#{CGI.escapeHTML($1.strip)}</code></pre>"
+      end
 end
 
 def beautify_html(input)
