@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>My Kondo Blog</title>
+  <link href="https://www.gokondo.io" />
+  <updated>Sun, 08 Dec 2024 14:01:20 -0800</updated>
+  <author>
+  <name>Marie Kondo</name>
+  </author>
+  <id>https://www.gokondo.io</id>
+  <entry>
+    <title>Hello, World!</title>
+    <link href="https://www.gokondo.io/hello" />
+    <id>https://www.gokondo.io/hello</id>
+    <updated>Thu, 05 Dec 2024 00:00:00 -0800</updated>
+    <summary>It's nice to meet you all and I can't wait to see where this blog takes me! My name is</summary>
+  </entry>
+  <entry>
+    <title>A Post About All Sorts of Stuff</title>
+    <link href="https://www.gokondo.io/slug" />
+    <id>https://www.gokondo.io/slug</id>
+    <updated>Thu, 05 Dec 2024 00:00:00 -0800</updated>
+    <summary>Another description for a post about all sorts of stuff</summary>
+  </entry>
+  <entry>
+    <title>A Third and Final Post</title>
+    <link href="https://www.gokondo.io/final" />
+    <id>https://www.gokondo.io/final</id>
+    <updated>Thu, 05 Dec 2024 00:00:00 -0800</updated>
+    <summary>A very interesting description for a very interesting third and final post here on my blog.</summary>
+  </entry>
+</feed>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>My Kondo Blog</title>
+    <link>https://www.gokondo.io</link>
+    <description>A minimalist blog</description>
+    <lastBuildDate>Sun, 08 Dec 2024 14:01:20 -0800</lastBuildDate>
+    <item>
+      <title>Hello, World!</title>
+      <link>https://www.gokondo.io/hello</link>
+      <description>It's nice to meet you all and I can't wait to see where this blog takes me! My name is</description>
+      <pubDate>Thu, 05 Dec 2024 00:00:00 -0800</pubDate>
+      <guid>https://www.gokondo.io/hello</guid>
+    </item>
+    <item>
+      <title>A Post About All Sorts of Stuff</title>
+      <link>https://www.gokondo.io/slug</link>
+      <description>Another description for a post about all sorts of stuff</description>
+      <pubDate>Thu, 05 Dec 2024 00:00:00 -0800</pubDate>
+      <guid>https://www.gokondo.io/slug</guid>
+    </item>
+    <item>
+      <title>A Third and Final Post</title>
+      <link>https://www.gokondo.io/final</link>
+      <description>A very interesting description for a very interesting third and final post here on my blog.</description>
+      <pubDate>Thu, 05 Dec 2024 00:00:00 -0800</pubDate>
+      <guid>https://www.gokondo.io/final</guid>
+    </item>
+  </channel>
+</rss>
