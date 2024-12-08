@@ -22,9 +22,35 @@ def parse_markdown(markdown)
   html = []
   inside_ul = false
   inside_ol = false
+  inside_code_block = false
+  code_block_buffer = []
 
   lines.each do |line|
     line.strip!
+
+    # Handle fenced code blocks
+    if line.match(/^```/)
+      if inside_code_block
+        # End the code block
+        html << "<pre><code>#{CGI.escapeHTML(code_block_buffer.join("\n"))}</code></pre>"
+        code_block_buffer = []
+        inside_code_block = false
+      else
+        # Start a new code block
+        inside_code_block = true
+      end
+      next
+    end
+
+    if inside_code_block
+      # Remove leading whitespace for consistent indentation
+      min_indentation = code_block_buffer.reject(&:empty?).map { |line| line[/^\s*/].size }.min || 0
+      normalized_code = code_block_buffer.map { |line| line.sub(/^\s{0,#{min_indentation}}/, '') }
+    
+      html << "<pre><code>#{CGI.escapeHTML(normalized_code.join("\n"))}</code></pre>"
+      code_block_buffer = []
+      inside_code_block = false
+    end
 
     # Handle unordered list items
     if line.match(/^(\*|\-|\+)\s+(.*)$/)
@@ -86,12 +112,10 @@ def parse_markdown(markdown)
       .gsub(/\*\*(.*?)\*\*/, '<strong>\1</strong>') 
       .gsub(/\*(.*?)\*/i, '<em>\1</em>')
       .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2">\1</a>')
-      .gsub(/^\s*[-*_]{3,}\s*$/, '<hr>')
-      .gsub(/`([^`]+)`/, '<code>\1</code>')
-      .gsub(/```(.*?)```/m) do
-        "<pre><code>#{CGI.escapeHTML($1.strip)}</code></pre>"
-      end
+      .gsub(/`([^`]+)`/, '<code>\1</code>') # Inline code
+      .gsub(/^\s*[-*_]{3,}\s*$/, '<hr>')   # Horizontal rules
 end
+
 
 def beautify_html(input)
   indent_level = 0
