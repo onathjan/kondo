@@ -119,7 +119,7 @@ end
 
 def beautify_html(input)
   indent_level = 0
-  indent_tags = ['body', 'header', 'nav', 'ul', 'ol', 'div', 'main', 'footer']
+  indent_tags = ['html', 'head', 'body', 'header', 'nav', 'ul', 'ol', 'div', 'main', 'footer']
   output = []
 
   input.strip.split("\n").each do |line|
