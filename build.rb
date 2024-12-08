@@ -254,7 +254,9 @@ def build_pages
 
           <link rel="stylesheet" type="text/css" href="assets/css/styles.css" />
 
-          <link rel="alternate" type="application/rss+xml" href="#{SITE_URL}/feed.xml" />
+          <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed">
+
+          <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Atom Feed">
 
           <!-- Primary Meta Tags -->
           <meta name="generator" content="Kondo—a minimalist SSG">
