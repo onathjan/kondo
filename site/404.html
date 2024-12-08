@@ -1,44 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 Not Found</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: #f9f9f9;
-      color: #333;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      margin: 0.5rem 0;
-    }
-    a {
-      color: #007acc;
-      text-decoration: none;
-      border-bottom: 1px solid #007acc;
-    }
-    a:hover {
-      color: #005f99;
-      border-color: #005f99;
-    }
-  </style>
-</head>
-<body>
-  <h1>404: Page Not Found</h1>
-  <p>Sorry, we couldn’t find the page you were looking for.</p>
-  <p><a href="/index.html">Go back to the homepage</a>.</p>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+    <meta name="generator" content="Kondo—a minimalist SSG">
+    <style>
+      body {
+        align-items: center;
+        background-color: #FCFCFC;
+        color: #121212;
+        display: flex;
+        font: 20px/1.6 Arial, sans-serif;
+        flex-direction: column;
+        justify-items: center;
+        margin-top: 2rem;
+        padding: 1.5rem 0.25rem;
+      }
+
+      h1 {
+        font: 600 30px/1.2 Arial, sans-serif;
+        margin: 5px;
+      }
+
+      p {
+        margin: 5px;
+      }
+
+      a {
+        color: #2964AA;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #1D4677;
+        text-decoration: underline;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #1f2229;
+          color: #ebecf0;
+        }
+
+        a {
+          color: #7AB7FF
+        }
+
+        a:hover {
+          color: #9BC9FF;
+        }
+      }
+
+      @media (max-width: 650px) {
+        body { 
+          font: 18px/1.6 Arial, sans-serif;
+          padding: 1rem 0.25rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+      <h1>404 Not Found</h1>
+      <p>The page you're looking for doesn't exist.</p>
+      <p><a href="/index.html">Go back to the homepage</a>.</p>
+  </body>
 </html>
