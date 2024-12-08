@@ -159,6 +159,15 @@ def extract_tag_name(line)
 end
 
 def build_index_page
+  file_content = File.read("content/index.md")
+
+  file_content.sub!(/^(---\s*\n.*?\n---)[\s\S]*/m, '\1')
+
+  File.open("content/index.md", 'w') do |file|
+    file.puts file_content
+    file.puts ""
+  end
+
   posts = []
 
   Dir.glob("content/posts/*md").each do |file|
