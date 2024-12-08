@@ -1,9 +1,11 @@
 require 'fileutils'
 require 'yaml'
 require 'cgi'
+require 'time'
 
 SITE_NAME = "Kondo"
 SITE_URL = "https://www.gokondo.io"
+YOUR_NAME = "Marie Kondo"
 
 def read_front_matter(file_path)
   content = File.read(file_path)
@@ -120,6 +122,31 @@ end
 def beautify_html(input)
   indent_level = 0
   indent_tags = ['html', 'head', 'body', 'header', 'nav', 'ul', 'ol', 'div', 'main', 'footer']
+  output = []
+
+  input.strip.split("\n").each do |line|
+    line.strip!
+    next if line.empty?
+
+    # Check if it's a closing tag for decreasing indent
+    if closing_tag?(line, indent_tags)
+      indent_level -= 1 if indent_level > 0
+      output << "#{"  " * indent_level}#{line}"
+    # Check if it's an opening tag for indenting
+    elsif opening_tag?(line, indent_tags)
+      output << "#{"  " * indent_level}#{line}"
+      indent_level += 1
+    else
+      output << "#{"  " * indent_level}#{line}"
+    end
+  end
+
+  output.join("\n")
+end
+
+def beautify_xml(input)
+  indent_level = 0
+  indent_tags = ['rss', 'channel', 'item', 'feed', 'entry']
   output = []
 
   input.strip.split("\n").each do |line|
@@ -303,11 +330,113 @@ def generate_sitemap
 end
 
 def generate_rss_feed
-  
+  # Array of main pages you don't want to include in the RSS feed
+  main_pages = ["index.md", "about.md", "now.md", "projects.md"] 
+
+  # Generate the RSS feed
+  rss_content = <<~RSS
+    <?xml version="1.0" encoding="UTF-8"?>
+    <rss version="2.0">
+      <channel>
+        <title>My Kondo Blog</title>
+        <link>https://www.gokondo.io</link>
+        <description>A minimalist blog</description>
+        <lastBuildDate>#{Time.now.strftime("%a, %d %b %Y %H:%M:%S %z")}</lastBuildDate>
+  RSS
+
+  # Iterate over markdown files and exclude main pages
+  Dir.glob("content/**/*.md").each do |file|
+    # Extract the filename or path from the file
+    filename = File.basename(file)
+
+    # Skip files that are in the main_pages array
+    next if main_pages.include?(filename)
+
+    # Read the front matter or metadata
+    front_matter, _ = read_front_matter(file)
+    slug = front_matter["slug"]
+    updated_on = Time.parse(front_matter["updated_on"]).strftime("%a, %d %b %Y %H:%M:%S %z") # Format pubDate correctly
+    
+    # Default description if excerpt is empty
+    description = front_matter["description"].empty? ? "No description available." : front_matter["description"]
+    
+    # Add the post to the RSS feed
+    rss_content += <<~RSS
+      <item>
+        <title>#{front_matter["title"]}</title>
+        <link>https://www.gokondo.io/#{slug}</link>
+        <description>#{description}</description>
+        <pubDate>#{updated_on}</pubDate>
+        <guid>https://www.gokondo.io/#{slug}</guid>
+      </item>
+    RSS
+  end
+
+  # Close the RSS feed
+  rss_content += <<~RSS
+      </channel>
+    </rss>
+  RSS
+
+  # Write the RSS feed to a file
+  File.write("site/rss.xml", beautify_xml(rss_content))
+end
+
+def generate_atom_feed
+  # Array of main pages you don't want to include in the Atom feed
+  main_pages = ["index.md", "about.md", "now.md", "projects.md"]
+
+  # Generate the Atom feed
+  atom_content = <<~ATOM
+    <?xml version="1.0" encoding="UTF-8"?>
+    <feed xmlns="http://www.w3.org/2005/Atom">
+      <title>My Kondo Blog</title>
+      <link href="https://www.gokondo.io" />
+      <updated>#{Time.now.strftime("%a, %d %b %Y %H:%M:%S %z")}</updated>
+      <author>
+        <name>#{YOUR_NAME}</name>
+      </author>
+      <id>https://www.gokondo.io</id>
+  ATOM
+
+  # Iterate over markdown files and exclude main pages
+  Dir.glob("content/**/*.md").each do |file|
+    # Extract the filename or path from the file
+    filename = File.basename(file)
+
+    # Skip files that are in the main_pages array
+    next if main_pages.include?(filename)
+
+    # Read the front matter or metadata
+    front_matter, _ = read_front_matter(file)
+    slug = front_matter["slug"]
+    updated_on = Time.parse(front_matter["updated_on"]).strftime("%a, %d %b %Y %H:%M:%S %z")
+
+    # Add the post to the Atom feed
+    atom_content += <<~ATOM
+      <entry>
+        <title>#{front_matter["title"]}</title>
+        <link href="https://www.gokondo.io/#{slug}" />
+        <id>https://www.gokondo.io/#{slug}</id>
+        <updated>#{updated_on}</updated>
+        <summary>#{front_matter["description"]}</summary>
+      </entry>
+    ATOM
+  end
+
+  # Close the Atom feed
+  atom_content += <<~ATOM
+    </feed>
+  ATOM
+
+  # Write the Atom feed to a file
+  File.write("site/atom.xml", beautify_xml(atom_content))
 end
 
 def build_site
   build_index_page
   build_pages
   generate_sitemap
+  generate_rss_feed
+  generate_atom_feed
 end
