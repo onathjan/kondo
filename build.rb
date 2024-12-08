@@ -85,8 +85,8 @@ def parse_markdown(markdown)
       .gsub(/\*\*(.*?)\*\*/, '<strong>\1</strong>') 
       .gsub(/\*(.*?)\*/i, '<em>\1</em>')
       .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2">\1</a>')
+      .gsub(/^\s*[-*_]{3,}\s*$/, '<hr>')
       .gsub(/`([^`]+)`/, '<code>\1</code>')
-      .gsub(/---/, "<hr>")
 end
 
 def beautify_html(input)
