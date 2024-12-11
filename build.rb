@@ -30,22 +30,18 @@ def parse_markdown(markdown)
   lines.each do |line|
     line.strip!
 
-    # Handle fenced code blocks
     if line.match(/^```/)
       if inside_code_block
-        # End the code block
         html << "<pre><code>#{CGI.escapeHTML(code_block_buffer.join("\n"))}</code></pre>"
         code_block_buffer = []
         inside_code_block = false
       else
-        # Start a new code block
         inside_code_block = true
       end
       next
     end
 
     if inside_code_block
-      # Remove leading whitespace for consistent indentation
       min_indentation = code_block_buffer.reject(&:empty?).map { |line| line[/^\s*/].size }.min || 0
       normalized_code = code_block_buffer.map { |line| line.sub(/^\s{0,#{min_indentation}}/, '') }
     
@@ -54,7 +50,6 @@ def parse_markdown(markdown)
       inside_code_block = false
     end
 
-    # Handle unordered list items
     if line.match(/^(\*|\-|\+)\s+(.*)$/)
       unless inside_ul
         html << "<ul>"
@@ -67,7 +62,6 @@ def parse_markdown(markdown)
       inside_ul = false
     end
 
-    # Handle ordered list items
     if line.match(/^\d+\.\s+(.*)$/)
       unless inside_ol
         html << "<ol>"
@@ -80,7 +74,6 @@ def parse_markdown(markdown)
       inside_ol = false
     end
 
-    # Handle headers
     if line.match(/^###### (.*?)$/)
       html << "<h6>#{$1}</h6>"
       next
@@ -101,21 +94,18 @@ def parse_markdown(markdown)
       next
     end
 
-    # Paragraphs (fallback for any non-matching lines)
     html << "<p>#{line}</p>" unless line.empty?
   end
 
-  # Close any remaining open tags
   html << "</ul>" if inside_ul
   html << "</ol>" if inside_ol
 
-  # Join lines back together and add inline styling
   html.join("\n")
       .gsub(/\*\*(.*?)\*\*/, '<strong>\1</strong>') 
       .gsub(/\*(.*?)\*/i, '<em>\1</em>')
       .gsub(/\[([^\]]+)\]\(([^\)]+)\)/, '<a href="\2">\1</a>')
-      .gsub(/`([^`]+)`/, '<code>\1</code>') # Inline code
-      .gsub(/^\s*[-*_]{3,}\s*$/, '<hr>')   # Horizontal rules
+      .gsub(/`([^`]+)`/, '<code>\1</code>')
+      .gsub(/^\s*[-*_]{3,}\s*$/, '<hr>')
 end
 
 
@@ -128,11 +118,9 @@ def beautify_html(input)
     line.strip!
     next if line.empty?
 
-    # Check if it's a closing tag for decreasing indent
     if closing_tag?(line, indent_tags)
       indent_level -= 1 if indent_level > 0
       output << "#{"  " * indent_level}#{line}"
-    # Check if it's an opening tag for indenting
     elsif opening_tag?(line, indent_tags)
       output << "#{"  " * indent_level}#{line}"
       indent_level += 1
@@ -153,11 +141,9 @@ def beautify_xml(input)
     line.strip!
     next if line.empty?
 
-    # Check if it's a closing tag for decreasing indent
     if closing_tag?(line, indent_tags)
       indent_level -= 1 if indent_level > 0
       output << "#{"  " * indent_level}#{line}"
-    # Check if it's an opening tag for indenting
     elsif opening_tag?(line, indent_tags)
       output << "#{"  " * indent_level}#{line}"
       indent_level += 1
@@ -180,7 +166,6 @@ def closing_tag?(line, indent_tags)
 end
 
 def extract_tag_name(line)
-  # Matches both opening and closing tag names (e.g., <body> or </body>)
   match = line.match(/<\/?([a-zA-Z0-9-]+)/)
   match ? match[1] : nil
 end
@@ -333,7 +318,6 @@ def generate_rss_feed
   # Array of main pages you don't want to include in the RSS feed
   main_pages = ["index.md", "about.md", "now.md", "projects.md"] 
 
-  # Generate the RSS feed
   rss_content = <<~RSS
     <?xml version="1.0" encoding="UTF-8"?>
     <rss version="2.0">
@@ -344,23 +328,17 @@ def generate_rss_feed
         <lastBuildDate>#{Time.now.strftime("%a, %d %b %Y %H:%M:%S %z")}</lastBuildDate>
   RSS
 
-  # Iterate over markdown files and exclude main pages
   Dir.glob("content/**/*.md").each do |file|
-    # Extract the filename or path from the file
     filename = File.basename(file)
 
-    # Skip files that are in the main_pages array
     next if main_pages.include?(filename)
 
-    # Read the front matter or metadata
     front_matter, _ = read_front_matter(file)
     slug = front_matter["slug"]
-    updated_on = Time.parse(front_matter["updated_on"]).strftime("%a, %d %b %Y %H:%M:%S %z") # Format pubDate correctly
+    updated_on = Time.parse(front_matter["updated_on"]).strftime("%a, %d %b %Y %H:%M:%S %z")
     
-    # Default description if excerpt is empty
     description = front_matter["description"].empty? ? "No description available." : front_matter["description"]
     
-    # Add the post to the RSS feed
     rss_content += <<~RSS
       <item>
         <title>#{front_matter["title"]}</title>
@@ -372,13 +350,11 @@ def generate_rss_feed
     RSS
   end
 
-  # Close the RSS feed
   rss_content += <<~RSS
       </channel>
     </rss>
   RSS
 
-  # Write the RSS feed to a file
   File.write("site/rss.xml", beautify_xml(rss_content))
 end
 
