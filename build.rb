@@ -320,10 +320,8 @@ def generate_rss_feed
         <lastBuildDate>#{Time.now.strftime("%a, %d %b %Y %H:%M:%S %z")}</lastBuildDate>
   RSS
 
-  Dir.glob("content/**/*.md").each do |file|
+  Dir.glob("content/posts/*.md").each do |file|
     front_matter, _ = read_front_matter(file)
-
-    next if front_matter["page_type"] = "website"
 
     slug = front_matter["slug"]
     updated_on = Time.parse(front_matter["updated_on"]).strftime("%a, %d %b %Y %H:%M:%S %z")
