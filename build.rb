@@ -243,7 +243,7 @@ def build_pages
           <!-- Open Graph -->
           <meta property="og:site-name" content="#{SITE_NAME}">
           <meta property="og:title" content="#{front_matter["title"]}">
-          <meta property="og:type" content="#{page_type}">
+          <meta property="og:type" content="#{front_matter["page_type"]}">
           <meta property="og:url" content="#{SITE_URL}/#{front_matter["slug"]}">
           <meta property="og:description" content="#{front_matter["description"]}">
           <meta property="og:image" content="#{SITE_URL}/assets/images/open-graph-image.jpg">
