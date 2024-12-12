@@ -217,13 +217,7 @@ def build_pages
 
     next if front_matter['draft'] == true
 
-    if ["index", "about", "now", "projects"].include?(front_matter["slug"]) 
-      page_type = "website" 
-    else 
-      page_type = "article"
-    end
-
-    front_matter["title"]
+    front_matter["title"] # is this even needed?
 
     page_content = <<~PAGE
       <!DOCTYPE html>
