@@ -2,6 +2,7 @@
 title: "A Post About All Sorts of Stuff"
 date: "2024-11-26"
 slug: "slug"
+page_type: "article"
 updated_on: "2024-12-05"
 description: "Another description for a post about all sorts of stuff"
 draft: false
