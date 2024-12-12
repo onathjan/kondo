@@ -309,8 +309,6 @@ def generate_sitemap
 end
 
 def generate_rss_feed
-  # Array of main pages you don't want to include in the RSS feed
-  main_pages = ["index.md", "about.md", "now.md", "projects.md"] 
 
   rss_content = <<~RSS
     <?xml version="1.0" encoding="UTF-8"?>
@@ -323,11 +321,10 @@ def generate_rss_feed
   RSS
 
   Dir.glob("content/**/*.md").each do |file|
-    filename = File.basename(file)
-
-    next if main_pages.include?(filename)
-
     front_matter, _ = read_front_matter(file)
+
+    next if front_matter["page_type"] = "website"
+
     slug = front_matter["slug"]
     updated_on = Time.parse(front_matter["updated_on"]).strftime("%a, %d %b %Y %H:%M:%S %z")
     
