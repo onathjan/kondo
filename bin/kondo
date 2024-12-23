@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 
-require_relative '../build'
 require 'yaml'
+require_relative 'lib/rss_generator'
+require_relative 'lib/site_builder'
+require_relative 'lib/sitemap_generator'
 
 def create_new_post(title)
   date = Time.now.to_s[0..9]
@@ -32,7 +34,10 @@ case ARGV[0]
 when "build"
   start_time = Time.now
   puts "Building the site..."
-  build_site
+  SiteBuilder.build_index_page
+  SiteBuilder.build_pages
+  SiteMapGenerator.generate
+  RssGenerator.generate
   end_time = Time.now 
   puts "Build complete | #{((end_time-start_time).to_f * 1000).round(2)} ms."
 
