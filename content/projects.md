@@ -6,8 +6,6 @@ updated_on: "2024-12-05"
 description: "The projects page is a place for you to showcase the things you have made and worked on over the years."
 ---
 
-# Projects
-
 ## [Project One](https://en.wikipedia.org/wiki/Main_Page)
 
 Project One is an innovative web application that solves a complex problem in a simple way. With cutting-edge technology and an intuitive interface, it’s designed to improve user experiences and streamline workflows. Whether you’re looking to boost productivity or engage users in a new way, Project One has you covered.

@@ -6,8 +6,6 @@ updated_on: "2024-12-05"
 description: "The about me page is where you can share a bit about yourself—where you're from, what you do, and what you're passionate about. Explain why you created this site."
 ---
 
-# About Me
-
 The About Me page is a chance to tell your readers who you are and why your site exists. Whether you're sharing your personal journey, professional background, or just your favorite hobbies, this page helps visitors connect with the person behind the content.
 
 Share a bit about yourself—where you're from, what you do, and what you're passionate about. Explain why you created this site. Is it a place for your writing, a portfolio of your work, or just a creative outlet? Let your personality shine with unique details or fun facts that give readers a glimpse into your life. Provide ways for people to connect with you if that's something you’re open to.
