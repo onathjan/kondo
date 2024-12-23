@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
 require 'yaml'
-require_relative 'lib/rss_generator'
-require_relative 'lib/site_builder'
-require_relative 'lib/sitemap_generator'
+require_relative '../lib/rss_generator'
+require_relative '../lib/site_builder'
+require_relative '../lib/sitemap_generator'
 
 def create_new_post(title)
   date = Time.now.to_s[0..9]
