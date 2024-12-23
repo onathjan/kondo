@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/build'
+require_relative '../build'
 require 'yaml'
 
 def create_new_post(title)
