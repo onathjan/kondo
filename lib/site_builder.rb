@@ -22,9 +22,8 @@ module SiteBuilder
       next if front_matter['draft'] == true
       title = front_matter['title']
       date = front_matter['date'].to_s
-      year = front_matter['date'].to_s[0..4]
       slug = front_matter['slug'] + ".html" 
-      posts << { year: year, date: date, title: title, slug: slug }
+      posts << { date: date, title: title, slug: slug }
     end
   
     posts.sort_by! { |post| post[:date] }.reverse!
