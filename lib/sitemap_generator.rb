@@ -4,7 +4,7 @@ module SiteMapGenerator
   require 'yaml'
 
   SITE_DIRECTORY = File.expand_path('../site', __dir__)
-  BASE_URL = YAML.load_file("config.yaml")["site_url"]
+  BASE_URL = YAML.load_file("config/config.yaml")["site_url"]
 
   def self.generate
     xml = Builder::XmlMarkup.new(indent: 2)
@@ -15,7 +15,7 @@ module SiteMapGenerator
         next if file.include?('/assets/')
 
         relative_path = file.sub("#{SITE_DIRECTORY}/", '')
-        
+
         if relative_path == "index.html"
           url = BASE_URL
         else

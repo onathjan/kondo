@@ -42,7 +42,7 @@ module SiteBuilder
   end
   
   def self.build_pages
-    config_file = YAML.load_file("config.yaml")
+    config_file = YAML.load_file("config/config.yaml")
 
     Dir.glob("content/**/*.md").each do |file|
       front_matter, body = ContentProcessor.read_front_matter(file)
