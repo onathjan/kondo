@@ -1,8 +1,8 @@
 module SiteBuilder
   require_relative 'content_processor'
   require_relative 'template_renderer'
-  
-  def build_index_page
+
+  def self.build_index_page
     file_content = File.read("content/index.md")
   
     file_content.sub!(/^(---\s*\n.*?\n---)[\s\S]*/m, '\1')
@@ -38,7 +38,7 @@ module SiteBuilder
     }
   end
   
-  def build_pages(content_dir)
+  def self.build_pages(content_dir)
     Dir.glob("content/**/*.md").each do |file|
       front_matter, body = ContentProcessor.read_front_matter(file)
       html_content = ContentProcessor.process_markdown(body)
