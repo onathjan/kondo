@@ -38,7 +38,7 @@ module SiteBuilder
     }
   end
   
-  def self.build_pages(content_dir)
+  def self.build_pages
     Dir.glob("content/**/*.md").each do |file|
       front_matter, body = ContentProcessor.read_front_matter(file)
       html_content = ContentProcessor.process_markdown(body)
