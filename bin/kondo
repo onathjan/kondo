@@ -16,8 +16,6 @@ def create_new_post(title)
     description: "Add a nice description here. Aim for 150-160 characters."
     draft: true
     ---
-
-    # #{title}
   
     ### Publish Date in Month Day, Year format (e.g. January 1st, 2025)
   CONTENT
