@@ -1,4 +1,7 @@
 module SiteBuilder
+  
+  require 'htmlbeautifier'
+  require 'yaml'
   require_relative 'content_processor'
   require_relative 'template_renderer'
 
@@ -39,6 +42,8 @@ module SiteBuilder
   end
   
   def self.build_pages
+    config_file = YAML.load_file("config.yaml")
+
     Dir.glob("content/**/*.md").each do |file|
       front_matter, body = ContentProcessor.read_front_matter(file)
       html_content = ContentProcessor.process_markdown(body)
@@ -46,6 +51,7 @@ module SiteBuilder
       next if front_matter['draft']
   
       assigns = {
+        'site_name' => config_file['site_name'],
         'title' => front_matter['title'],
         'date' => front_matter['date'],
         'content' => html_content
@@ -53,7 +59,7 @@ module SiteBuilder
   
       rendered_content = TemplateRenderer.render_template("templates/layout.liquid", assigns)
       output_file = "site/#{front_matter['slug']}.html"
-      File.write(output_file, rendered_content)
+      File.write(output_file, HtmlBeautifier.beautify(rendered_content))
     end
   end
 end
