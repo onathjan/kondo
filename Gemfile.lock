@@ -1,0 +1,27 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bigdecimal (3.1.8)
+    htmlbeautifier (1.4.3)
+    kramdown (2.5.1)
+      rexml (>= 3.3.9)
+    liquid (5.6.0)
+      bigdecimal
+      strscan
+    rexml (3.4.0)
+    strscan (3.1.2)
+
+PLATFORMS
+  ruby
+  x86_64-darwin-21
+
+DEPENDENCIES
+  htmlbeautifier
+  kramdown
+  liquid
+
+RUBY VERSION
+   ruby 3.3.3p89
+
+BUNDLED WITH
+   2.5.11
