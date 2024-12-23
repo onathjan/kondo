@@ -32,6 +32,7 @@ module SiteBuilder
     posts_content = posts.map do |post|
       <<~POST_LINK
         ###### #{post[:date]}
+
         ## [#{post[:title]}](#{post[:slug]})
       POST_LINK
     end.join("\n")
