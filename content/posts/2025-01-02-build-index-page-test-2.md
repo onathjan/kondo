@@ -8,18 +8,18 @@ description: "A very interesting description for a very interesting third and fi
 draft: false
 ---
 
-# A Third and Final Post
-
 ### January 15th, 2025
 
 This should be visible.
 
 This should be an unordered list:
+
 - Thing one
 - Thing two
 - Thing three
 
 This should be an ordered list:
+
 1. Thing one
 2. Thing two
 3. Thing three

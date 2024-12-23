@@ -8,13 +8,12 @@ description: "It's nice to meet you all and I can't wait to see where this blog 
 draft: false
 ---
 
-# Hello, World!
-
 ### December 1st, 2024
 
 This should be visible.
 
 This should be an unordered list:
+
 - Thing one
 - Thing two
 - Thing three
@@ -22,6 +21,7 @@ This should be an unordered list:
 Here is another p element
 
 This should be an ordered list:
+
 1. Thing one
 2. Thing two
 3. Thing three
