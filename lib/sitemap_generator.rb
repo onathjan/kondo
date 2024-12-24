@@ -6,7 +6,7 @@ module SiteMapGenerator
 
   SITE_DIRECTORY = File.expand_path('../site', __dir__)
   BASE_URL = YAML.load_file("config/config.yaml")["site_url"]
-  HASH_FILE = File.expand_path('../file_hashes.yaml', __dir__)
+  HASH_FILE = File.expand_path("../config/file_hashes.yaml", __dir__)
 
   def self.generate
     if File.exist?(HASH_FILE)

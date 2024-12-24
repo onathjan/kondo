@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.gokondo.io/404.html</loc>
-    <lastmod>2024-12-23T17:47:50-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io/about.html</loc>
-    <lastmod>2024-12-23T17:51:47-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io/final.html</loc>
-    <lastmod>2024-12-23T17:51:47-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io/hello.html</loc>
-    <lastmod>2024-12-23T17:51:47-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io</loc>
-    <lastmod>2024-12-23T17:51:47-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io/now.html</loc>
-    <lastmod>2024-12-23T17:51:47-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io/projects.html</loc>
-    <lastmod>2024-12-23T17:51:47-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io/rss.xml</loc>
-    <lastmod>2024-12-23T15:44:43-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io/sitemap.xml</loc>
-    <lastmod>2024-12-23T17:51:47-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
   <url>
     <loc>https://www.gokondo.io/slug.html</loc>
-    <lastmod>2024-12-23T17:51:47-08:00</lastmod>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
+  </url>
+  <url>
+    <loc>https://www.gokondo.io/subscribe.html</loc>
+    <lastmod>2024-12-24T14:21:56-08:00</lastmod>
   </url>
 </urlset>
