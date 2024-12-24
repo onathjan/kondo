@@ -13,7 +13,8 @@ def create_new_post(title)
     title: "#{title}"
     date: "#{date}"
     slug: "change-me"
-    description: "Add a nice description here. Aim for 150-160 characters."
+    description: "Add a nice description about your post here. Aim for around 150-160 characters."
+    page_type: article
     draft: true
     ---
   
