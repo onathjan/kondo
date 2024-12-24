@@ -84,7 +84,7 @@ when "clean"
   end.compact
 
   # Add these files to content files since they have no md counterpart
-  content_files << "404" << "rss" << "sitemap" << "subscribe"
+  content_files << "404" << "rss" << "sitemap"
 
   site_files = Dir.glob("site/*.html").map { |file| File.basename(file, File.extname(file)) }
 
