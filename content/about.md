@@ -1,9 +1,8 @@
 ---
 title: "About Me"
 slug: "about"
-page_type: "website"
-updated_on: "2024-12-05"
 description: "The about me page is where you can share a bit about yourself—where you're from, what you do, and what you're passionate about. Explain why you created this site."
+page_type: "website"
 ---
 
 The About Me page is a chance to tell your readers who you are and why your site exists. Whether you're sharing your personal journey, professional background, or just your favorite hobbies, this page helps visitors connect with the person behind the content.

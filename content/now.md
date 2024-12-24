@@ -1,9 +1,8 @@
 ---
 title: "What I'm Doing Now"
 slug: "now"
-page_type: "website"
-updated_on: "2024-12-05"
 description: "The Now page is all about giving your readers a snapshot of what’s currently happening in your life."
+page_type: "website"
 ---
 
 ### Updated on December 23rd, 2024, from my home office on the Moon.
