@@ -25,6 +25,23 @@ def create_new_post(title)
     file.write(content) 
   end
 
+  def create_new_page(title)
+    file_name = "content/#{title.downcase.split(" ").join("-")}.md"
+    content = <<~CONTENT
+      ---
+      title: "#{title}"
+      slug: "change-me"
+      description: "Add a nice description about your post here. Aim for around 150-160 characters."
+      page_type: article
+      ---
+    
+    CONTENT
+  
+    File.open(file_name, 'w') do |file| 
+      file.write(content) 
+    end
+  end
+
   # Open the new file in VSCode. Change to meet your setup if you don't use the code command to open files in VSCode.
   system("code #{file_name}")
 end
