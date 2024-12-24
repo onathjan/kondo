@@ -13,7 +13,7 @@ def create_new_post(title)
     title: "#{title}"
     date: "#{date}"
     slug: "change-me"
-    description: "Add a nice description about your post here. Aim for around 150-160 characters."
+    description: "Write a concise description for your post (150-160 characters)."
     page_type: article
     draft: true
     ---
@@ -25,21 +25,24 @@ def create_new_post(title)
     file.write(content) 
   end
 
-  def create_new_page(title)
-    file_name = "content/#{title.downcase.split(" ").join("-")}.md"
-    content = <<~CONTENT
-      ---
-      title: "#{title}"
-      slug: "change-me"
-      description: "Add a nice description about your post here. Aim for around 150-160 characters."
-      page_type: article
-      ---
-    
-    CONTENT
+  # Open the new file in VSCode. Change to meet your setup if you don't use the code command to open files in VSCode.
+  system("code #{file_name}")
+end
+
+def create_new_page(title)
+  file_name = "content/#{title.downcase.split(" ").join("-")}.md"
+  content = <<~CONTENT
+    ---
+    title: "#{title}"
+    slug: "change-me"
+    description: "Write a concise description for your post (150-160 characters)."
+    page_type: website
+    ---
   
-    File.open(file_name, 'w') do |file| 
-      file.write(content) 
-    end
+  CONTENT
+
+  File.open(file_name, 'w') do |file| 
+    file.write(content) 
   end
 
   # Open the new file in VSCode. Change to meet your setup if you don't use the code command to open files in VSCode.
@@ -94,11 +97,12 @@ when "clean"
   end
 
 when "new"
-  if ARGV[1]
-    title = ARGV[1..-1].join(" ")
-    create_new_post(title)
+  if ARGV[1] == "post"
+    create_new_post(ARGV[2])
+  elsif ARGV[1] == "page"
+    create_new_page(ARGV[2])
   else
-    puts "Error: Please provide a title for the new post (kondo new \"My New Post\")"
+    puts "Error: Please provide a title for the new post or page (kondo new post \"My New Post\" or kondo new page \"My New Page\")"
   end
   
 when "help", nil
