@@ -53,7 +53,10 @@ module SiteBuilder
       assigns = {
         'site_name' => config_file['site_name'],
         'title' => front_matter['title'],
-        'date' => front_matter['date'],
+        'description' => front_matter['description'],
+        'page_type' => front_matter['page_type'],
+        'site_url' => config_file['site_url'],
+        'slug' => front_matter['slug'],
         'content' => html_content
       }
   
