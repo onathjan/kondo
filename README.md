@@ -4,39 +4,6 @@
 
 Kondo is a **simple** and **opinionated** Static Site Generator designed to embrace minimalism. By prioritizing only the essentials, it pushes back against the complexity and bloat of modern websites, offering everything you need—and nothing you don’t—to create a clean and focused blog.
 
-## Getting Started
-
-1. Set up your config file.
-2. Run bundle install to install gems. 
-3. Set up commands:
-    1. run `chmod +x bin/kondo` to make kondo scripts executable
-    2. run `./bin/kondo build` to build your site, `./bin/kondo serve` to serve the site, etc.
-    3. (Optional but recommended) Add to your path to make commands global with `export PATH="$PATH:/path/to/your/kondo-project/bin"` and then running `source ~/.bash_profile` (or `source ~/.zshrc` if you're using zsh) so that you can run commands without the `./` in front of them (e.g. `kondo build`).
-
-
-## Usage
-
-- kondo build    # Generate the static site
-- kondo serve    # Open the site locally in your default browser
-- kondo clean    # Removes files from site/ that have been deleted from content/
-- kondo new      # Create a new post or page
-- kondo deploy   # Deploy the site directory to your VPS with rsync
-- kondo help     # Show this help message
-
-Notes:
-- kondo new post 'Title'   # Create a new post with a title
-- kondo new page 'Title'   # Create a new page with a title
-
-Titles must be in single quotes or else you may run into dquote issues
-
----
-
-# Kondo: A Minimalist Static Site Generator
-
-## Philosophy
-
-Kondo is a **simple** and **opinionated** Static Site Generator designed to embrace minimalism. By prioritizing only the essentials, it pushes back against the complexity and bloat of modern websites, offering everything you need—and nothing you don’t—to create a clean and focused blog.
-
 ## Installation
 
 Before you start, ensure that you have Ruby and Bundler installed on your system.
@@ -44,9 +11,9 @@ Before you start, ensure that you have Ruby and Bundler installed on your system
 1. Clone or download the Kondo repository to your local machine.
 2. Run `bundle install` to install the necessary gems.
 3. Set up commands:
-  1. run `chmod +x bin/kondo` to make the scripts there executable
-  2. run `./bin/kondo build` to build your site, `./bin/kondo serve` to serve the site, etc.
-  3. (Optional but recommended) Add to your path to make commands global with `export PATH="$PATH:/path/to/your/kondo-project/bin"` and then running `source ~/.bash_profile  # or source ~/.zshrc if you're using zsh` so that you can run commands without the `./` in front of them (e.g. `kondo build`).
+    1. run `chmod +x bin/kondo` to make kondo scripts executable
+    2. run `./bin/kondo build` to build your site, `./bin/kondo serve` to serve the site, etc.
+    3. (Optional but recommended) Add to your path to make commands global with `export PATH="$PATH:/path/to/your/kondo-project/bin"` and then running `source ~/.bash_profile` (or `source ~/.zshrc` if you're using zsh so that you can run commands without the `./` in front of them (e.g. `kondo build`).
 
 ## Getting Started
 
