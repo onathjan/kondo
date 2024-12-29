@@ -5,10 +5,12 @@ require_relative '../lib/rss_generator'
 require_relative '../lib/site_builder'
 require_relative '../lib/sitemap_generator'
 
+def clean_title(title)
+  title.gsub(/[^a-zA-Z ]/, "").downcase.split(" ").join("-")
+end
+
 def create_new_post(title)
-  date = Time.now.to_s[0..9]
-  cleaned_title = title.gsub(/[^a-zA-Z ]/, "").downcase.split(" ").join("-")
-  file_name = "content/posts/#{date}-#{cleaned_title}.md"
+  file_name = "content/posts/#{Time.now.to_s[0..9]}-#{clean_title(title)}.md"
   content = <<~CONTENT
     ---
     title: "#{title}"
@@ -31,8 +33,7 @@ def create_new_post(title)
 end
 
 def create_new_page(title)
-  cleaned_title = title.gsub(/[^a-zA-Z ]/, "").downcase.split(" ").join("-")
-  file_name = "content/#{cleaned_title}.md"
+  file_name = "content/#{clean_title(title)}.md"
   content = <<~CONTENT
     ---
     title: "#{title}"
