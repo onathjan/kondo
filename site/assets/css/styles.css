@@ -17,7 +17,6 @@ h1 {
 
 h2 {
   font: 600 24px/1.2 Arial, sans-serif;
-  margin: 25px 0 -12px 0;
 }
 
 h3 {
@@ -37,9 +36,7 @@ h5 {
 
 h6 {
   color: #555;
-  font-size: 16px;
-  font-weight: 400;
-  margin: 50px 0 -18px 0;
+  font: 400 16px Arial, sans-serif;
 }
 
 ul {
@@ -92,7 +89,6 @@ header {
   flex-direction: row;
   font-size: 20px;
   justify-content: space-between;
-  padding-bottom: 5px;
 }
 
 .home-link {
@@ -123,6 +119,27 @@ nav ul li a {
   text-decoration: none;
 }
 
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 2.25rem 0;
+}
+
+.post > h6, .post > h2 {
+  margin: 0;
+}
+
+.projects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.projects > li {
+  margin: 15px 0;
+}
+
 footer {
   align-items: center;
   color: #444;
@@ -141,17 +158,6 @@ footer p {
   display: flex;
   flex-direction: row;
   gap: 10px;
-}
-
-.posts {
-  list-style: none;
-  margin-top: 20px;
-  padding: 0; 
-}
-
-.posts li {
-  font-size: 20px;
-  margin: 5px 0;
 }
 
 @media (prefers-color-scheme: dark) {
