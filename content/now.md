@@ -5,7 +5,7 @@ description: "The Now page is all about giving your readers a snapshot of what�
 page_type: "website"
 ---
 
-### Updated on December 23rd, 2024, from my home office on the Moon.
+### Updated on December 29th, 2024, from my home office in Tokyo.
 
 The Now page is all about giving your readers a snapshot of what’s currently happening in your life. Inspired by the [Now movement](https://nownownow.com), this page is a way to share what you’re focused on at the moment—whether that’s work, hobbies, travel, or personal growth.
 
