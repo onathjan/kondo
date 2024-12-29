@@ -5,14 +5,6 @@ description: "Kondo is a minimalist static site generator focused on simplicity 
 page_type: "website"
 ---
 
-###### 2025-1-15
+###### 2024-12-29
 
-## [A Third and Final Post](final.html)
-
-###### 2024-12-01
-
-## [Hello, World!](hello.html)
-
-###### 2024-11-26
-
-## [A Post About All Sorts of Stuff](slug.html)
+## [Kondo—A Minimalist SSG](kondo.html)
