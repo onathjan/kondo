@@ -28,10 +28,15 @@ module RssGenerator
         maker.items.new_item do |item|
           item.title = post["title"]
           item.link = "#{config_file["site_url"]}/#{post["slug"]}.html"
+          item.description = post["description"]
           item.pubDate = post["date"]
+          item.guid.content = "#{config_file["site_url"]}/#{post["slug"]}.html"
         end
       end
     end
-    File.write('site/rss.xml', rss)
+
+    rss_xml = rss.to_s
+    rss_xml.gsub!(/xmlns:itunes="http:\/\/www.itunes.com\/dtds\/podcast-1.0.dtd"\s*/, "")
+    File.write('site/rss.xml', rss_xml)
   end
 end

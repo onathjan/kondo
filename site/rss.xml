@@ -2,7 +2,6 @@
 <rss version="2.0"
   xmlns:content="http://purl.org/rss/1.0/modules/content/"
   xmlns:dc="http://purl.org/dc/elements/1.1/"
-  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
   xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
   <channel>
     <title>Kondo</title>
@@ -11,7 +10,9 @@
     <item>
       <title>Kondo—A Minimalist SSG</title>
       <link>https://www.gokondo.io/kondo.html</link>
+      <description>Discover how Marie Kondo&#39;s minimalist approach to tidying inspired the design of Kondo, a minimalist SSG. Embrace simplicity with Kondo’s streamlined, no-fuss platform.</description>
       <pubDate>Sun, 29 Dec 2024 00:00:00 -0800</pubDate>
+      <guid>https://www.gokondo.io/kondo.html</guid>
       <dc:date>2024-12-29T00:00:00-08:00</dc:date>
     </item>
   </channel>
