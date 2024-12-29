@@ -9,9 +9,9 @@ Kondo is a **simple** and **opinionated** Static Site Generator designed to embr
 1. Set up your config file.
 2. Run bundle install to install gems. 
 3. Set up commands:
-    - run `chmod +x bin/kondo` to make the scripts there executable
-    - run `./bin/kondo build` to build your site, `./bin/kondo serve` to serve the site, etc.
-    - (Optional but recommended) Add to your path to make commands global with `export PATH="$PATH:/path/to/your/kondo-project/bin"` and then running `source ~/.bash_profile  # or source ~/.zshrc if you're using zsh` so that you can run commands without the `./` in front of them (e.g. `kondo build`).
+    1. run `chmod +x bin/kondo` to make kondo scripts executable
+    2. run `./bin/kondo build` to build your site, `./bin/kondo serve` to serve the site, etc.
+    3. (Optional but recommended) Add to your path to make commands global with `export PATH="$PATH:/path/to/your/kondo-project/bin"` and then running `source ~/.bash_profile  # or source ~/.zshrc if you're using zsh` so that you can run commands without the `./` in front of them (e.g. `kondo build`).
 
 
 ## Usage
