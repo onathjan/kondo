@@ -119,7 +119,7 @@ when "new"
   elsif ARGV[1] == "page"
     create_new_page(ARGV[2])
   else
-    puts "Error: Please provide a title for the new post or page (kondo new post \"My New Post\" or kondo new page \"My New Page\")"
+    puts "Error: Please provide a title for the new post or page (kondo new post 'My New Post' or kondo new page 'My New Page')"
   end
   
 when "help", nil
