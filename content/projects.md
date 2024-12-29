@@ -6,4 +6,4 @@ page_type: "website"
 ---
 
   {: .projects}
-- [**Kondo**<br>A simple and opinionated Static Site Generator designed to embrace minimalism.](https://en.wikipedia.org/wiki/Main_Page)
+- [**Kondo**<br>A simple and opinionated Static Site Generator designed to embrace minimalism.](https://github.com/onathjan/kondo)
