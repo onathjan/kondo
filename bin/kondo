@@ -128,7 +128,14 @@ when "help", nil
       kondo build    # Generate the static site
       kondo serve    # Open the site locally in your default browser
       kondo clean    # Removes files from site/ that have been deleted from content/
+      kondo new      # Create a new post or page
       kondo help     # Show this help message
+
+    Notes:
+      kondo new post 'Title'   # Create a new post with a title
+      kondo new page 'Title'   # Create a new page with a title
+      Titles must be in single quotes or else you may run into dquote issues
+
   HELP
 
 else
