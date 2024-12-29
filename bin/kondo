@@ -80,7 +80,7 @@ when "serve"
       start_time = Time.now
       SiteBuilder.build_pages
       SiteMapGenerator.generate
-      # RssGenerator.generate
+      RssGenerator.generate
       end_time = Time.now
       puts "Build complete | #{((end_time - start_time).to_f * 1000).round(2)} ms."
     end
