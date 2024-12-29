@@ -131,6 +131,7 @@ when "help", nil
       kondo serve    # Open the site locally in your default browser
       kondo clean    # Removes files from site/ that have been deleted from content/
       kondo new      # Create a new post or page
+      kondo deploy   # Deploy the site directory to your VPS with rsync
       kondo help     # Show this help message
 
     Notes:
