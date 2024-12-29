@@ -61,18 +61,31 @@ when "build"
   puts "Build complete | #{((end_time-start_time).to_f * 1000).round(2)} ms."
 
 when "serve"
-  puts "Serving the site..."
+  require "listen"
+
+  puts "Serving the site on http://localhost:4000..."
   
-  index_path = "site/index.html"
-  if File.exist?(index_path)
-    system("open #{index_path}")  # For macOS
-    # For Linux, use `xdg-open`:
-    # system("xdg-open #{index_path}")
-    # For Windows, use `start`:
-    # system("start #{index_path}")
-  else
-    puts "Error: 'site/index.html' not found. Please build the site first."
+  server_thread = Thread.new do
+    system("ruby -run -e httpd site -p 4000")
   end
+
+  listener = Listen.to("site/assets", "content", "templates") do |modified, added, removed|
+    if modified.any? || added.any? || removed.any?
+      puts "Changes detected in: #{(modified + added + removed).join(', ')}"
+      puts "Rebuilding the site..."
+      start_time = Time.now
+      SiteBuilder.build_pages
+      SiteMapGenerator.generate
+      # RssGenerator.generate
+      end_time = Time.now
+      puts "Build complete | #{((end_time - start_time).to_f * 1000).round(2)} ms."
+    end
+  end
+
+  listener.start
+  puts "Watching for changes in 'content', 'site/assets', and 'templates'..."
+  
+  server_thread.join
 
 when "clean"
   content_files = Dir.glob("content/**/*").map do |file|
