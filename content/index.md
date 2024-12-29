@@ -6,6 +6,6 @@ page_type: "website"
 ---
 
 <div class="post">
-  <h6>2024-12-29</h6>
+  <p class="post-date">2024-12-29</p>
   <h2><a href="kondo.html">Kondo—A Minimalist SSG</a></h2>
 </div>

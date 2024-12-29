@@ -34,11 +34,6 @@ h5 {
   text-align: center;
 }
 
-h6 {
-  color: #555;
-  font: 400 16px Arial, sans-serif;
-}
-
 ul {
   margin: 10px 0;
 }
@@ -126,8 +121,13 @@ nav ul li a {
   margin: 2.25rem 0;
 }
 
-.post > h6, .post > h2 {
+.post > p, .post > h2 {
   margin: 0;
+}
+
+.post-date {
+  color: #555;
+  font: 400 16px Arial, sans-serif;
 }
 
 .projects {

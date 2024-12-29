@@ -31,7 +31,7 @@ module SiteBuilder
     posts_content = posts.map do |post|
       <<~POST_LINK
       <div class="post">
-        <h6>#{post[:date]}</h6>
+        <p class="post-date">#{post[:date]}</p>
         <h2><a href="#{post[:slug]}">#{post[:title]}</a></h2>
       </div>
       POST_LINK
