@@ -10,6 +10,7 @@ def clean_title(title)
 end
 
 def create_new_post(title)
+  date = Time.now.to_s[0..9]
   file_name = "content/posts/#{Time.now.to_s[0..9]}-#{clean_title(title)}.md"
   content = <<~CONTENT
     ---
