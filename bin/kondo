@@ -7,7 +7,8 @@ require_relative '../lib/sitemap_generator'
 
 def create_new_post(title)
   date = Time.now.to_s[0..9]
-  file_name = "content/posts/#{date}-#{title.downcase.split(" ").join("-")}.md"
+  cleaned_title = title.gsub(/[^a-zA-Z ]/, "").downcase.split(" ").join("-")
+  file_name = "content/posts/#{date}-#{cleaned_title}.md"
   content = <<~CONTENT
     ---
     title: "#{title}"
@@ -30,7 +31,8 @@ def create_new_post(title)
 end
 
 def create_new_page(title)
-  file_name = "content/#{title.downcase.split(" ").join("-")}.md"
+  cleaned_title = title.gsub(/[^a-zA-Z ]/, "").downcase.split(" ").join("-")
+  file_name = "content/#{cleaned_title}.md"
   content = <<~CONTENT
     ---
     title: "#{title}"
