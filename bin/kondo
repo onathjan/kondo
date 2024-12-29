@@ -121,6 +121,27 @@ when "new"
   else
     puts "Error: Please provide a title for the new post or page (kondo new post 'My New Post' or kondo new page 'My New Page')"
   end
+
+when "deploy"
+  source_dir = 'site/'
+  destination_server = ENV['KONDO_DESTINATION_SERVER']
+
+  if destination_server.nil?
+    puts "Error: Destination server address (KONDO_DESTINATION_SERVER) not set in environment."
+    exit 1
+  end
+
+  puts "Deploying to: #{destination_server}"
+  puts "Running: rsync -avz --delete #{source_dir} #{destination_server}"
+
+  system("rsync -avz --delete #{source_dir} #{destination_server}")
+
+  if $?.success?
+    puts "Deployment successful!"
+  else
+    puts "Deployment failed. Please check the error messages above."
+  end
+
   
 when "help", nil
   puts <<~HELP
