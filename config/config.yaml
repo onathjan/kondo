@@ -2,4 +2,4 @@ site_name: "Kondo"
 site_url: "https://www.gokondo.io"
 site_description: "A minimalist blog built with Kondo"
 your_name: "Marie Kondo"
-your_email: "kondo@example.com" #remove from footer in `layout.liquid`if you don't want people to be able to email you.
+your_email_address: "kondo@example.com"

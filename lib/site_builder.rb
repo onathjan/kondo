@@ -59,7 +59,7 @@ module SiteBuilder
         'site_url' => config_file['site_url'],
         'slug' => front_matter['slug'],
         'content' => html_content,
-        'your_email' => config_file['your_email']
+        'your_email_address' => config_file['your_email_address']
       }
   
       rendered_content = TemplateRenderer.render_template("templates/layout.liquid", assigns)
