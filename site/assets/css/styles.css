@@ -108,9 +108,9 @@ nav ul li {
   list-style: none;
   margin: 0;
 }
+
 nav ul li a {
   padding: 0.5rem;
-
   text-decoration: none;
 }
 
@@ -164,13 +164,13 @@ footer p {
   body {
     background-color: #1f2229;
   }
-  
+
   body, .home-link, .home-link:hover {
       color: #ebecf0;
   }
 
   a {
-    color: #7AB7FF
+    color: #7AB7FF;
   }
 
   a:hover {
@@ -205,7 +205,7 @@ footer p {
   h1 {
     font-size: 28px;
   }
-  
+
   h2 {
     font-size: 22px;
   }
