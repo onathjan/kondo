@@ -23,6 +23,7 @@ module SiteMapGenerator
       Dir.glob("#{SITE_DIRECTORY}/**/*").each do |file|
         next if File.directory?(file)
         next if file.include?('/assets/')
+        next if file.end_with?('sitemap.xml')
 
         relative_path = file.sub("#{SITE_DIRECTORY}/", '')
 
